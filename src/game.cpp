@@ -8,55 +8,70 @@ using namespace std;
 class Game
 {
 public:
-	Game(){
+	Game()
+	{
 		sec = new Sequence;
 		turns = 0;
 	}
 
-	~Game(){
+	~Game()
+	{
 		delete sec;
 	}
 
-	void join(){
+	void join()
+	{
 		bool flag = false;
 		int lenght = 4;
 		char *input = new char[lenght];
-		
+		int *result;
 		string str;
-		while(!flag){
+		while (!flag)
+		{
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
-    		cin >> str;
-    		for(int i = 0 ; i < lenght ; ++i){
-    			input[i] = str[i];
+			cin >> str;
+			for (int i = 0; i < lenght; ++i)
+			{
+				input[i] = str[i];
 			}
-    		//cout << input <<endl;
-    		if(is_valid(input , lenght)){
-    			 sec->check(input , lenght);
-    		}
-    		else {
-    			cout << "некорректный ввод" << endl;
-    			continue;
-    		}
+			//cout << input <<endl;
+			if (is_valid(input, lenght))
+			{
+				result = sec->check(input, lenght);
+			}
+			else
+			{
+				cout << "некорректный ввод" << endl;
+				continue;
+			}
+			delete[] result;
 		}
 		delete input;
 	}
 
-	bool is_valid(char *input , int lenght){
-		for(int i = 0 ; i < lenght ; ++i){
+	bool is_valid(char *input, int lenght)
+	{
+		for (int i = 0; i < lenght; ++i)
+		{
 			bool eq = false;
-			for(int j = i-1 ; j >= 0 ; --j){
-				if(input[j] == input[i]){
+			for (int j = i - 1; j >= 0; --j)
+			{
+				if (input[j] == input[i])
+				{
 					return false;
 				}
 			}
 
-			for(int j = 0 ; j < 10 ; ++j){
-				if( input[i] == slovar[j]){
+			for (int j = 0; j < 10; ++j)
+			{
+				if (input[i] == slovar[j])
+				{
 					eq = true;
 					break;
 				}
 			}
-			if(!eq){
+			if (!eq)
+			{
 				return false;
 			}
 		}
@@ -64,9 +79,9 @@ public:
 	}
 
 private:
-    char slovar[10] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'};
-    Sequence *sec;
-    int turns;
+	char slovar[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	Sequence *sec;
+	int turns;
 };
 
 #endif
