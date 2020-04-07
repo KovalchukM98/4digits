@@ -19,7 +19,7 @@ public:
     {
         delete[] trueseq;
     }
-    void check(char *truseq, char *input[], int n)
+    int check(char *input, int n)
     {
         int bulls = 0, cows = 0;
         while (true)
@@ -43,11 +43,16 @@ public:
                 }
             }
         }
+        int *a;
+        a = new int[2];
+        a[0] = bulls;
+        a[1] = cows;
+        return a;
     }
 
 private:
     char *trueseq;
-    void makerand(char trueseq[n])
+    void makerand()
     {
         srand(time(nullptr));
         bool is;
