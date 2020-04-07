@@ -23,13 +23,15 @@ public:
 	void join(){
 		bool flag = false;
 		int lenght = 4;
-		char *word = new char[lenght];
+		char *input = new char[lenght];
 		
 		string str;
 		while(!flag){
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
     		cin >> str;
+    		cout << str << endl;
     		for(int i = 0 ; i < lenght ; ++i){
+    			cout << "AAAAAAAAAAAAA" <<endl;
     			input[i] = str[i];
 			}
     		//cout << input <<endl;
@@ -48,6 +50,7 @@ public:
 		for(int i = 0 ; i < lenght ; ++i){
 			bool eq = false;
 			for(int j = 0 ; j < 10 ; ++j){
+				cout << slovar[i] << endl;
 				if( input[i] == slovar[j]){
 					eq = true;
 					break;
