@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <iostream>
+#include <fstream>
 #include "game.cpp"
 
 using namespace std;
@@ -39,9 +41,20 @@ public:
 		}
 	}
 
-	void start(){}
+	void start(){
+		game = new Game;
+		game.join();
+		delete game;
+	}
 
-	void show_leader_board(){}
+	void show_leader_board(){
+		fstream in;
+		string str;
+		in.open("leaders.txt");
+		while(getline(in , str)){
+			cout << str <<endl;
+    	}
+	}
 
 	void about(){}
 
