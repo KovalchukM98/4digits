@@ -19,8 +19,30 @@ public:
     {
         delete[] trueseq;
     }
-    void check(char *input, int size)
+    void check(char *truseq, char *input[], int n)
     {
+        int bulls = 0, cows = 0;
+        while (true)
+        {
+            for (int i = 0; i < n; ++i)
+            {
+                for (int j = 0; j < n; ++j)
+                {
+                    if (i != j)
+                    {
+                        if (input[i] == trueseq[j])
+                        {
+                            ++cows;
+                        }
+                    }
+                    else
+                    {
+                        if (input[i] == trueseq[j])
+                            ++bulls;
+                    }
+                }
+            }
+        }
     }
 
 private:
