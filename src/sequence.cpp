@@ -2,6 +2,7 @@
 #define SEQUENCE
 #include <iostream>
 #include <random>
+#include <ctime>
 
 class Sequence
 {
