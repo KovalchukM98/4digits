@@ -1,25 +1,22 @@
 #ifndef SEQUENCE
 #define SEQUENCE
 #include <iostream>
-#include <iomanip>
-#include <algorithm>
 #include <random>
-#include <ctime>
-const int n = 4;
+
 class Sequence
 {
 public:
     Sequence()
     {
-        trueseq = new char[n];
-        makerand(trueseq);
+        trueseq = new char[4];
+        makerand();
     }
 
     ~Sequence()
     {
         delete[] trueseq;
     }
-    int check(char *input, int n)
+    int *check(char *input, int n)
     {
         int bulls = 0, cows = 0;
         while (true)
@@ -52,12 +49,14 @@ public:
 
 private:
     char *trueseq;
+
+
     void makerand()
     {
-        srand(time(nullptr));
+        srand(time(0));
         bool is;
         int element;
-        for (int i = 0; i < n;)
+        for (int i = 0; i < 4;)
         {
             is = false;
             element = rand() % 9;
@@ -76,6 +75,6 @@ private:
             }
         }
     }
-}
+};
 
 #endif

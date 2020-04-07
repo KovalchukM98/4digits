@@ -1,6 +1,8 @@
 #ifndef GAME
 #define GAME
 
+#include "sequence.cpp"
+
 using namespace std;
 
 class Game
@@ -9,6 +11,9 @@ public:
 	Game(){
 		sec = new Sequence;
 		turns = 0;
+		for(int i = 0 ; i < 10 ; ++i){
+			slovar[i] = i;
+		}
 	}
 
 	~Game(){
@@ -29,7 +34,7 @@ public:
 			}
     		//cout << input <<endl;
     		if(is_valid(input , lenght)){
-    			 sec.check(input , lenght);
+    			 sec->check(input , lenght);
     		}
     		else {
     			cout << "некорректный ввод" << endl;
@@ -56,9 +61,9 @@ public:
 	}
 
 private:
-    char *slovar[10] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+    char slovar[10];
     Sequence *sec;
     int turns;
-}
+};
 
 #endif
