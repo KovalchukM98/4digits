@@ -43,7 +43,7 @@ public:
 
 	void start(){
 		game = new Game;
-		game.join();
+		game->join();
 		delete game;
 	}
 
