@@ -31,7 +31,6 @@ public:
 			}
     		//cout << input <<endl;
     		if(is_valid(input , lenght)){
-    			cout << "всё заебись" <<endl;
     			 sec->check(input , lenght);
     		}
     		else {
