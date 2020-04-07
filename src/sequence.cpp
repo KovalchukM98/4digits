@@ -19,6 +19,9 @@ public:
     {
         delete[] trueseq;
     }
+    void check(char *input, int size)
+    {
+    }
 
 private:
     char *trueseq;
