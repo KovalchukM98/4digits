@@ -1,6 +1,8 @@
 #include <iostream>
+
 int main()
 {
-    std::cout << "Maxim kupi naggetsov";
+    Menu M;
+    M.join;
     return 0;
 }
