@@ -18,12 +18,14 @@ public:
 	void join(){
 		bool flag = false;
 		int lenght = 4;
-		char *input = new char[lenght];
+		char *word = new char[lenght];
 		
+		string str;
 		while(!flag){
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
+    		cin >> str;
     		for(int i = 0 ; i < lenght ; ++i){
-    			cin >> input[i];
+    			input[i] = str[i];
 			}
     		//cout << input <<endl;
     		if(is_valid(input , lenght)){
