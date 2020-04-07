@@ -11,9 +11,6 @@ public:
 	Game(){
 		sec = new Sequence;
 		turns = 0;
-		for(int i = 0 ; i < 10 ; ++i){
-			slovar[i] = i;
-		}
 	}
 
 	~Game(){
@@ -29,13 +26,12 @@ public:
 		while(!flag){
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
     		cin >> str;
-    		cout << str << endl;
     		for(int i = 0 ; i < lenght ; ++i){
-    			cout << "AAAAAAAAAAAAA" <<endl;
     			input[i] = str[i];
 			}
     		//cout << input <<endl;
     		if(is_valid(input , lenght)){
+    			cout << "всё заебись" <<endl;
     			 sec->check(input , lenght);
     		}
     		else {
@@ -49,8 +45,13 @@ public:
 	bool is_valid(char *input , int lenght){
 		for(int i = 0 ; i < lenght ; ++i){
 			bool eq = false;
+			for(int j = i-1 ; j >= 0 ; --j){
+				if(input[j] == input[i]){
+					return false;
+				}
+			}
+
 			for(int j = 0 ; j < 10 ; ++j){
-				cout << slovar[i] << endl;
 				if( input[i] == slovar[j]){
 					eq = true;
 					break;
@@ -64,7 +65,7 @@ public:
 	}
 
 private:
-    char slovar[10];
+    char slovar[10] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'};
     Sequence *sec;
     int turns;
 };
