@@ -17,13 +17,13 @@ public:
 	~Menu(){}
 
 	void join(){
-		cout << "1 новая игра" << endl;
-		cout << "2 таблица рекордов" << endl;
-		cout << "3 о программе" << endl;
-		cout << "4 выход" << endl;
 		int key = 0;
 		bool flag = false;
 		while(!flag){
+			cout << "1 новая игра" << endl;
+			cout << "2 таблица рекордов" << endl;
+			cout << "3 о программе" << endl;
+			cout << "4 выход" << endl;
 			cin >> key;
 			switch(key){
 				case 1 :
