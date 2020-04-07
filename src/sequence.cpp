@@ -5,13 +5,13 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
-
+const int n = 4;
 class Sequence
 {
 public:
     Sequence()
     {
-        trueseq = new char[4];
+        trueseq = new char[n];
         makerand(trueseq);
     }
 
@@ -47,12 +47,12 @@ public:
 
 private:
     char *trueseq;
-    void makerand(char trueseq[4])
+    void makerand(char trueseq[n])
     {
         srand(time(nullptr));
         bool is;
         int element;
-        for (int i = 0; i < 4;)
+        for (int i = 0; i < n;)
         {
             is = false;
             element = rand() % 9;
