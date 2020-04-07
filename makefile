@@ -1,4 +1,4 @@
-all: bin/programm
+all: bin/programm clean
 
 bin/programm: build/main.o build/menu.o build/game.o build/sequence.o
 	g++ -Wall --std=c++17 -Werror build/main.o build/menu.o build/game.o build/sequence.o -o bin/programm
@@ -16,4 +16,4 @@ build/sequence.o: src/game.cpp
 	g++ -Wall --std=c++17 -Werror -c src/sequence.cpp -o build/sequence.o
 
 clean:
-	rm -rf build/*.o
+	rm -f *.o build/*.o

@@ -6,6 +6,7 @@
 #include <string.h>
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "game.cpp"
 
 using namespace std;
