@@ -29,7 +29,7 @@ public:
 		while (!flag)
 		{
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
-			cin >> str;
+			getline(cin , str);
 			if (!is_valid(str, lenght))
 			{
 				cout << "некорректный ввод" << endl;

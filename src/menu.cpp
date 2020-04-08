@@ -26,7 +26,8 @@ public:
 			cout << "2 таблица рекордов" << endl;
 			cout << "3 о программе" << endl;
 			cout << "4 выход" << endl;
-			cin >> str;
+			getline(cin , str);
+			cout << "str  " << str << endl;
 			if(!is_valid(str)){
 				cout << "некорректный ввод" <<endl;
 				continue;
