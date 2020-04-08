@@ -39,7 +39,11 @@ public:
 			{
 				input[i] = str[i];
 			}
+			cout << "AAAAAAAAA" <<endl;
 			result = sec->check(input, lenght);
+			cout << "BBBBBBBBB" <<endl;
+			cout << "cows : " << result[0] << endl;
+			cout << "bulls :" << result[1] << endl;
 			delete[] result;
 		}
 		delete input;
