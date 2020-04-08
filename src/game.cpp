@@ -1,6 +1,7 @@
 #ifndef GAME
 #define GAME
-
+#include <string>
+#include <iostream>
 #include "sequence.cpp"
 
 using namespace std;
