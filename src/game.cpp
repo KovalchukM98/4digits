@@ -31,7 +31,6 @@ public:
 		{
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
 			getline(cin , str);
-			cin.ignore(32767, '\n');
 			if (!is_valid(str, lenght))
 			{
 				cout << "некорректный ввод" << endl;
