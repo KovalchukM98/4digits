@@ -27,8 +27,8 @@ public:
 			cout << "3 о программе" << endl;
 			cout << "4 выход" << endl;
 			cin >> str;
-			if(str.size() > 1){
-				cout << "некорректный ввод" << endl;
+			if(!is_valid(str)){
+				cout << "некорректный ввод" <<endl;
 				continue;
 			}
 			key = str[0] - 48;
@@ -46,6 +46,17 @@ public:
 				flag = true;
 			}
 		}
+	}
+
+	bool is_valid(string str){
+		if(str.size() > 1){
+			return false;
+		}
+		int key = str[0] - 48;
+		if( key < 1 || key > 4){
+			return false;
+		}
+		return true;
 	}
 
 	void start(){
