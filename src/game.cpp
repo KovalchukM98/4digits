@@ -30,33 +30,33 @@ public:
 		{
 			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
 			cin >> str;
-			for (int i = 0; i < lenght; ++i)
-			{
-				input[i] = str[i];
-			}
-			//cout << input <<endl;
-			if (is_valid(input, lenght))
-			{
-				result = sec->check(input, lenght);
-			}
-			else
+			if (!is_valid(str, lenght))
 			{
 				cout << "некорректный ввод" << endl;
 				continue;
 			}
+			for (int i = 0; i < lenght; ++i)
+			{
+				input[i] = str[i];
+			}
+			result = sec->check(input, lenght);
 			delete[] result;
 		}
 		delete input;
 	}
 
-	bool is_valid(char *input, int lenght)
-	{
+	bool is_valid(string str, int lenght)
+	{	
+		int k = str.size();
+		if( k != lenght){
+			return false;
+		}
 		for (int i = 0; i < lenght; ++i)
 		{
 			bool eq = false;
 			for (int j = i - 1; j >= 0; --j)
 			{
-				if (input[j] == input[i])
+				if (str[j] == str[i])
 				{
 					return false;
 				}
@@ -64,7 +64,7 @@ public:
 
 			for (int j = 0; j < 10; ++j)
 			{
-				if (input[i] == slovar[j])
+				if (str[i] == slovar[j])
 				{
 					eq = true;
 					break;
