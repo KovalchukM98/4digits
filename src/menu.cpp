@@ -27,6 +27,10 @@ public:
 			cout << "3 о программе" << endl;
 			cout << "4 выход" << endl;
 			cin >> str;
+			if(str.size() > 1){
+				cout << "некорректный ввод" << endl;
+				continue;
+			}
 			key = str[0] - 48;
 			switch(key){
 				case 1 :
