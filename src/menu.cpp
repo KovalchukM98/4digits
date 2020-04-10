@@ -27,7 +27,6 @@ public:
 			cout << "3 о программе" << endl;
 			cout << "4 выход" << endl;
 			getline(cin , str);
-			cout << "str  " << str << endl;
 			if(!is_valid(str)){
 				cout << "некорректный ввод" <<endl;
 				continue;

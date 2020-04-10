@@ -4,6 +4,8 @@
 #include <random>
 #include <ctime>
 
+using namespace std;
+
 class Sequence
 {
 public:
@@ -42,6 +44,7 @@ public:
         a = new int[2];
         a[0] = bulls;
         a[1] = cows;
+        // cout << "true : " << trueseq << endl;
         return a;
     }
 

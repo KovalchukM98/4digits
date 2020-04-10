@@ -36,18 +36,32 @@ public:
 				cout << "некорректный ввод" << endl;
 				continue;
 			}
+			turns++;
 			for (int i = 0; i < lenght; ++i)
 			{
 				input[i] = str[i];
 			}
-			cout << "AAAAAAAAA" <<endl;
 			result = sec->check(input, lenght);
-			cout << "BBBBBBBBB" <<endl;
-			cout << "cows : " << result[0] << endl;
-			cout << "bulls :" << result[1] << endl;
+			flag = result_check(result);
 			delete[] result;
 		}
+		cout << input << " is right answer" << endl;
+		cout << "turns : " << turns << "\n" << endl;
+		//leaders_board.compare(turns);  ????
 		delete input;
+	}
+
+	bool result_check(int *result){
+		if( result[0] < 4){
+				cout << "\nturn : " << turns << endl;
+				cout << "	bulls : " << result[0] << endl;
+				cout << "	cows  :" << result[1] << "\n" << endl;
+				return false;
+		}
+		else{
+			cout << "\n 	You win!" << endl;
+		}
+		return true;
 	}
 
 	bool is_valid(string str, int lenght)
