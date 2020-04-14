@@ -1,4 +1,4 @@
-all: bin/programm clean
+all: bin/programm
 
 bin/programm: build/main.o build/menu.o build/game.o build/sequence.o
 	g++ -Wall --std=c++17 -Werror build/main.o build/menu.o build/game.o build/sequence.o -o bin/programm
