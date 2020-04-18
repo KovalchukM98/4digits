@@ -9,8 +9,6 @@
 #include <string>
 #include "game.cpp"
 
-using namespace std;
-
 class Menu{
 public:
 	Menu(){}
@@ -19,16 +17,16 @@ public:
 
 	void join(){
 		int key = 0;
-		string str;
+		std::string str;
 		bool flag = false;
 		while(!flag){
-			cout << "1 новая игра" << endl;
-			cout << "2 таблица рекордов" << endl;
-			cout << "3 о программе" << endl;
-			cout << "4 выход" << endl;
-			getline(cin , str);
+			std::cout << "1 новая игра" << std::endl;
+			std::cout << "2 таблица рекордов" << std::endl;
+			std::cout << "3 о программе" << std::endl;
+			std::cout << "4 выход" << std::endl;
+			std::getline(std::cin , str);
 			if(!is_valid(str)){
-				cout << "некорректный ввод" <<endl;
+				std::cout << "некорректный ввод" << std::endl;
 				continue;
 			}
 			key = str[0] - 48;
@@ -48,12 +46,12 @@ public:
 		}
 	}
 
-	bool is_valid(string str){
+	bool is_valid(std::string str){
 		if(str.size() > 1){
 			return false;
 		}
 		int key = str[0] - 48;
-		if( key < 1 || key > 4){
+		if(key < 1 || key > 4){
 			return false;
 		}
 		return true;
@@ -66,11 +64,11 @@ public:
 	}
 
 	void show_leader_board(){
-		fstream in;
-		string str;
+		std::fstream in;
+		std::string str;
 		in.open("leaders.txt");
-		while(getline(in , str)){
-			cout << str <<endl;
+		while(std::getline(in , str)){
+			std::cout << str << std::endl;
     	}
 	}
 
