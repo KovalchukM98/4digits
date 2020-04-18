@@ -49,6 +49,8 @@ public:
 		delete input;
 	}
 
+private:
+
 	bool result_check(int *result){
 		if( result[0] < 4){
 				std::cout << "\n" << "turn : " << turns << std::endl;
@@ -94,7 +96,6 @@ public:
 		return true;
 	}
 
-private:
 	char alphabet[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 	Sequence *sec;
 	int turns;
