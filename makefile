@@ -12,8 +12,8 @@ build/game.o: src/game.cpp
 build/menu.o: src/menu.cpp
 	g++ -Wall --std=c++17 -Werror -c src/menu.cpp -o build/menu.o
 
-build/sequence.o: src/game.cpp
+build/sequence.o: src/sequence.cpp
 	g++ -Wall --std=c++17 -Werror -c src/sequence.cpp -o build/sequence.o
 
 clean:
-	rm -f *.o build/*.o
+	rm -rf *.o build/*.o
