@@ -9,10 +9,10 @@ using namespace std;
 class Sequence
 {
 public:
-    Sequence()
+    Sequence(char alphabet[10])
     {
         trueseq = new char[4];
-        makerand();
+        makerand(alphabet);
     }
 
     ~Sequence()
@@ -51,7 +51,7 @@ public:
 private:
     char *trueseq;
 
-    void makerand()
+    void makerand(char alphabet[10])
     {
         srand(time(0));
         bool is;

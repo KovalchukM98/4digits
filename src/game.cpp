@@ -9,7 +9,7 @@ class Game
 public:
 	Game()
 	{
-		sec = new Sequence;
+		sec = new Sequence(alphabet);
 		turns = 0;
 	}
 
@@ -81,7 +81,7 @@ public:
 
 			for (int j = 0; j < 10; ++j)
 			{
-				if (str[i] == slovar[j])
+				if (str[i] == alphabet[j])
 				{
 					is_suitable = true;
 					break;
