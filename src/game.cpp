@@ -4,8 +4,6 @@
 #include <iostream>
 #include "sequence.cpp"
 
-using namespace std;
-
 class Game
 {
 public:
@@ -22,18 +20,18 @@ public:
 
 	void join()
 	{
-		bool flag = false;
+		bool is_game_over = false;
 		int lenght = 4;
 		char *input = new char[lenght];
 		int *result;
-		string str;
-		while (!flag)
+		std::string str;
+		while (!is_game_over)
 		{
-			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
-			getline(cin , str);
+			std::cout << "введите " << lenght << " числа от 0 до 9 " << std::endl;
+			getline(std::cin , str);
 			if (!is_valid(str, lenght))
 			{
-				cout << "некорректный ввод" << endl;
+				std::cout << "некорректный ввод" << std::endl;
 				continue;
 			}
 			turns++;
@@ -42,24 +40,24 @@ public:
 				input[i] = str[i];
 			}
 			result = sec->check(input, lenght);
-			flag = result_check(result);
+			is_game_over = result_check(result);
 			delete[] result;
 		}
-		cout << input << " is right answer" << endl;
-		cout << "turns : " << turns << "\n" << endl;
+		std::cout << input << " is right answer" << std::endl;
+		std::cout << "your turns : " << turns << "\n" << std::endl;
 		//leaders_board.compare(turns);  ????
 		delete input;
 	}
 
 	bool result_check(int *result){
 		if( result[0] < 4){
-				cout << "\nturn : " << turns << endl;
-				cout << "	bulls : " << result[0] << endl;
-				cout << "	cows  :" << result[1] << "\n" << endl;
+				std::cout << "\n" << "turn : " << turns << std::endl;
+				std::cout << "	bulls : " << result[0] << std::endl;
+				std::cout << "	cows  :" << result[1] << "\n" << std::endl;
 				return false;
 		}
 		else{
-			cout << "\n 	You win!" << endl;
+			std::cout << "\n 	You win!" << std::endl;
 		}
 		return true;
 	}
@@ -72,7 +70,7 @@ public:
 		}
 		for (int i = 0; i < lenght; ++i)
 		{
-			bool eq = false;
+			bool is_suitable = false;
 			for (int j = i - 1; j >= 0; --j)
 			{
 				if (str[j] == str[i])
@@ -85,11 +83,11 @@ public:
 			{
 				if (str[i] == slovar[j])
 				{
-					eq = true;
+					is_suitable = true;
 					break;
 				}
 			}
-			if (!eq)
+			if (!is_suitable)
 			{
 				return false;
 			}
@@ -98,7 +96,7 @@ public:
 	}
 
 private:
-	char slovar[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	char alphabet[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 	Sequence *sec;
 	int turns;
 };
