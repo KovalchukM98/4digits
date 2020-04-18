@@ -62,15 +62,14 @@ public:
 		return true;
 	}
 
-	bool is_valid(string str, int lenght)
+	bool is_valid(std::string str, int lenght)
 	{	
-		int k = str.size();
-		if( k != lenght){
+		if( str.size() != static_cast<unsigned int>(lenght)){
 			return false;
 		}
 		for (int i = 0; i < lenght; ++i)
 		{
-			bool is_suitable = false;
+			bool is_suitable_symbol = false;
 			for (int j = i - 1; j >= 0; --j)
 			{
 				if (str[j] == str[i])
@@ -83,11 +82,11 @@ public:
 			{
 				if (str[i] == alphabet[j])
 				{
-					is_suitable = true;
+					is_suitable_symbol = true;
 					break;
 				}
 			}
-			if (!is_suitable)
+			if (!is_suitable_symbol)
 			{
 				return false;
 			}
