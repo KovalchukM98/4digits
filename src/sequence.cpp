@@ -55,26 +55,10 @@ private:
     void makerand(std::vector<char> alphabet)
     {
         srand(time(0));
-        bool is;
-        int element;
-        for (int i = 0; i < 4;)
-        {
-            is = false;
-            element = rand() % 9;
-            for (int j = 0; j < i; ++j)
-            {
-                if (trueseq[j] == (element + '0'))
-                {
-                    is = true;
-                    break;
-                }
-            }
-            if (!is)
-            {
-                trueseq[i] = element + '0';
-                ++i;
-            }
-        }
+        auto rng = std::default_random_engine{};
+        std::random_shuffle(alphabet.begin(), alphabet.end());
+        for (int i = 0; i < 4; ++i)
+            trueseq[i] = alphabet[i];
     }
 };
 
