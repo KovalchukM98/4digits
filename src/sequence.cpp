@@ -3,13 +3,14 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
 class Sequence
 {
 public:
-    Sequence(char alphabet[10])
+    Sequence(std::vector<char> alphabet)
     {
         trueseq = new char[4];
         makerand(alphabet);
@@ -51,7 +52,7 @@ public:
 private:
     char *trueseq;
 
-    void makerand(char alphabet[10])
+    void makerand(std::vector<char> alphabet)
     {
         srand(time(0));
         bool is;

@@ -2,6 +2,7 @@
 #define GAME
 #include <string>
 #include <iostream>
+#include <vector>
 #include "sequence.cpp"
 
 class Game
@@ -96,7 +97,7 @@ private:
 		return true;
 	}
 
-	char alphabet[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	std::vector<char> alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 	Sequence *sec;
 	int turns;
 };
