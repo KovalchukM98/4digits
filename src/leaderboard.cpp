@@ -70,9 +70,39 @@ bool Leaderboard::is_valid(std::string str)
     return true;
 }
 
-
-void Leaderboard::compare()
+bool Leaderboard::is_name_valid(std::string name)
 {
+    if(name.size() == 0)
+    {
+        return false;
+    }
+    if(name.find(" ") != -1)
+    {
+        return false;
+    }
+    return true;
+}
+void Leaderboard::compare(int turns)
+{
+    for(int i = 0; i < 10; ++i)
+    {
+        if(records[i].second == 0)
+        {
+            std::cout << "Введите имя: \n";
+            std::string name;
+            while(getline(std::cin,name))
+            {
+                if(!is_name_valid(name))
+                {
+                    std::cout << "Некорректный ввод\n";
+                    continue;
+                }
 
+            }
+            records[i].first = name;
+            records[i].second = turns;
+        }
+    
+    }
 }
 

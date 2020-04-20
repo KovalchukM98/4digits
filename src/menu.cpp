@@ -67,7 +67,8 @@ bool Menu::is_valid(string str){
 
 void Menu::start(){
 		game = new Game;
-		/*int res = */game->join();
+		int res = game->join();
+		leaderboard->compare(res);
 		delete game;
 	}
 

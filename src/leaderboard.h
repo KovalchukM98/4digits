@@ -10,9 +10,10 @@ public:
     Leaderboard();
     ~Leaderboard();
     void show_leader_board();
-    void compare();
+    void compare(int turns);
     bool is_valid(std::string str);
     void parser();
+    bool is_name_valid(std::string name);
 private:
     std::fstream in;
     std::pair<std::string, int> records[10];
