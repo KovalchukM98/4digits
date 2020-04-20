@@ -3,14 +3,14 @@
 
 #include <string>
 #include "game.h"
-
+#include "leaderboard.h"
 class Menu{
 public:
 	Menu();
 
 	~Menu();
 
-	void join();
+	int join();
 
 	bool is_valid(std::string str);
 
@@ -22,6 +22,7 @@ public:
 
 private:
 	Game *game;
+	Leaderboard *leaderboard;
 };
 
 #endif

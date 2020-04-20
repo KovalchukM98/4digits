@@ -19,7 +19,7 @@ Game::~Game()
 	delete sec;
 }
 
-void Game::join()
+int Game::join()
 	{
 		bool is_game_over = false;
 		int lenght = 4;

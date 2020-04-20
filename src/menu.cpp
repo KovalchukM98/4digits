@@ -9,14 +9,19 @@
 #include <string>
 #include "menu.h"
 #include "game.h"
-
+#include "leaderboard.h"
 using namespace std;
 
-Menu::Menu(){}
+Menu::Menu(){
+	leaderboard = new Leaderboard;
+}
 
-Menu::~Menu(){}
+Menu::~Menu(){
+	delete leaderboard;
+}
 
-void Menu::join(){
+
+int Menu::join(){
 		int key = 0;
 		std::string str;
 		bool flag = false;
@@ -60,17 +65,8 @@ bool Menu::is_valid(string str){
 
 void Menu::start(){
 		game = new Game;
-		game->join();
+		int res = game->join();
 		delete game;
-	}
-
-void Menu::show_leader_board(){
-		fstream in;
-		string str;
-		in.open("leaders.txt");
-		while(std::getline(in , str)){
-			std::cout << str << std::endl;
-    	}
 	}
 
 void Menu::about(){}
