@@ -2,38 +2,37 @@
 #define GAME
 #include <string>
 #include <iostream>
-#include "sequence.cpp"
+#include <vector>
+#include <utility>
+#include "game.h"
+#include "sequence.h"
 
-using namespace std;
-
-class Game
+Game::Game()
 {
-public:
-	Game()
-	{
-		sec = new Sequence;
-		turns = 0;
-	}
+	alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	sec = new Sequence(alphabet);
+	turns = 0;
+}
 
-	~Game()
-	{
-		delete sec;
-	}
+Game::~Game()
+{
+	delete sec;
+}
 
-	void join()
+void Game::join()
 	{
-		bool flag = false;
+		bool is_game_over = false;
 		int lenght = 4;
 		char *input = new char[lenght];
-		int *result;
-		string str;
-		while (!flag)
+		std::pair<int,int> result;
+		std::string str;
+		while (!is_game_over)
 		{
-			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
-			getline(cin , str);
+			std::cout << "введите " << lenght << " числа от 0 до 9 " << std::endl;
+			getline(std::cin , str);
 			if (!is_valid(str, lenght))
 			{
-				cout << "некорректный ввод" << endl;
+				std::cout << "некорректный ввод" << std::endl;
 				continue;
 			}
 			turns++;
@@ -41,38 +40,37 @@ public:
 			{
 				input[i] = str[i];
 			}
-			result = sec->check(input, lenght);
-			flag = result_check(result);
-			delete[] result;
+			result = sec->count_bulls_and_cows(input, lenght);
+			is_game_over = result_check(result);
 		}
-		cout << input << " is right answer" << endl;
-		cout << "turns : " << turns << "\n" << endl;
+		std::cout << input << " is right answer" << std::endl;
+		std::cout << "your turns : " << turns << "\n" << std::endl;
 		//leaders_board.compare(turns);  ????
 		delete input;
 	}
 
-	bool result_check(int *result){
-		if( result[0] < 4){
-				cout << "\nturn : " << turns << endl;
-				cout << "	bulls : " << result[0] << endl;
-				cout << "	cows  :" << result[1] << "\n" << endl;
+
+bool Game::result_check(std::pair<int,int> result){
+		if( result.first < 4){
+				std::cout << "\n" << "turn : " << turns << std::endl;
+				std::cout << "	bulls : " << result.first << std::endl;
+				std::cout << "	cows  :" << result.second << "\n" << std::endl;
 				return false;
 		}
 		else{
-			cout << "\n 	You win!" << endl;
+			std::cout << "\n 	You win!" << std::endl;
 		}
 		return true;
 	}
 
-	bool is_valid(string str, int lenght)
+bool Game::is_valid(std::string str, int lenght)
 	{	
-		int k = str.size();
-		if( k != lenght){
+		if( str.size() != static_cast<unsigned int>(lenght)){
 			return false;
 		}
 		for (int i = 0; i < lenght; ++i)
 		{
-			bool eq = false;
+			bool is_suitable_symbol = false;
 			for (int j = i - 1; j >= 0; --j)
 			{
 				if (str[j] == str[i])
@@ -83,24 +81,18 @@ public:
 
 			for (int j = 0; j < 10; ++j)
 			{
-				if (str[i] == slovar[j])
+				if (str[i] == alphabet[j])
 				{
-					eq = true;
+					is_suitable_symbol = true;
 					break;
 				}
 			}
-			if (!eq)
+			if (!is_suitable_symbol)
 			{
 				return false;
 			}
 		}
 		return true;
 	}
-
-private:
-	char slovar[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-	Sequence *sec;
-	int turns;
-};
 
 #endif

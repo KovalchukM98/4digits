@@ -3,23 +3,23 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <vector>
+#include <algorithm>
+#include <utility>
+#include "sequence.h"
 
-using namespace std;
-
-class Sequence
-{
-public:
-    Sequence()
+Sequence::Sequence(std::vector<char> alphabet)
     {
         trueseq = new char[4];
-        makerand();
+        makerand(alphabet);
     }
 
-    ~Sequence()
+Sequence::~Sequence()
     {
         delete[] trueseq;
     }
-    int *check(char *input, int n)
+
+    std::pair<int,int> Sequence::count_bulls_and_cows(char *input, int n)
     {
         int bulls = 0, cows = 0;
         for (int i = 0; i < n; ++i)
@@ -40,41 +40,19 @@ public:
                 }
             }
         }
-        int *a;
-        a = new int[2];
-        a[0] = bulls;
-        a[1] = cows;
-        // cout << "true : " << trueseq << endl;
+        std::pair<int ,int> a;
+        a.first = bulls;
+        a.second = cows;
+        // std::cout << "true : " << trueseq << std::endl;
         return a;
     }
 
-private:
-    char *trueseq;
-
-    void makerand()
+void Sequence::makerand(std::vector<char> alphabet)
     {
         srand(time(0));
-        bool is;
-        int element;
-        for (int i = 0; i < 4;)
-        {
-            is = false;
-            element = rand() % 9;
-            for (int j = 0; j < i; ++j)
-            {
-                if (trueseq[j] == (element + '0'))
-                {
-                    is = true;
-                    break;
-                }
-            }
-            if (!is)
-            {
-                trueseq[i] = element + '0';
-                ++i;
-            }
-        }
+        std::random_shuffle(alphabet.begin(), alphabet.end());
+        for (int i = 0; i < 4; ++i)
+            trueseq[i] = alphabet[i];
     }
-};
 
 #endif
