@@ -12,23 +12,22 @@
 
 using namespace std;
 
-
 Menu::Menu(){}
 
 Menu::~Menu(){}
 
 void Menu::join(){
 		int key = 0;
-		string str;
+		std::string str;
 		bool flag = false;
 		while(!flag){
-			cout << "1 новая игра" << endl;
-			cout << "2 таблица рекордов" << endl;
-			cout << "3 о программе" << endl;
-			cout << "4 выход" << endl;
-			getline(cin , str);
+			std::cout << "1 новая игра" << std::endl;
+			std::cout << "2 таблица рекордов" << std::endl;
+			std::cout << "3 о программе" << std::endl;
+			std::cout << "4 выход" << std::endl;
+			std::getline(std::cin , str);
 			if(!is_valid(str)){
-				cout << "некорректный ввод" <<endl;
+				std::cout << "некорректный ввод" << std::endl;
 				continue;
 			}
 			key = str[0] - 48;
@@ -53,7 +52,7 @@ bool Menu::is_valid(string str){
 			return false;
 		}
 		int key = str[0] - 48;
-		if( key < 1 || key > 4){
+		if(key < 1 || key > 4){
 			return false;
 		}
 		return true;
@@ -69,8 +68,8 @@ void Menu::show_leader_board(){
 		fstream in;
 		string str;
 		in.open("leaders.txt");
-		while(getline(in , str)){
-			cout << str <<endl;
+		while(std::getline(in , str)){
+			std::cout << str << std::endl;
     	}
 	}
 

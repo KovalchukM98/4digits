@@ -49,7 +49,7 @@ Sequence::~Sequence()
 void Sequence::makerand(std::vector<char> alphabet)
     {
         srand(time(0));
-        random_shuffle(alphabet.begin(), alphabet.end());
+        std::random_shuffle(alphabet.begin(), alphabet.end());
         for (int i = 0; i < 4; ++i)
             trueseq[i] = alphabet[i];
     }
