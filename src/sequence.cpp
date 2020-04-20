@@ -5,22 +5,19 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
-using namespace std;
+#include "sequence.h"
 
-class Sequence
-{
-public:
-    Sequence(std::vector<char> alphabet)
+Sequence::Sequence(std::vector<char> alphabet)
     {
         trueseq = new char[4];
         makerand(alphabet);
     }
 
-    ~Sequence()
+Sequence::~Sequence()
     {
         delete[] trueseq;
     }
-    int *check(char *input, int n)
+    int* Sequence::check(char *input, int n)
     {
         int bulls = 0, cows = 0;
         for (int i = 0; i < n; ++i)
@@ -45,20 +42,16 @@ public:
         a = new int[2];
         a[0] = bulls;
         a[1] = cows;
-        // cout << "true : " << trueseq << endl;
+        // std::cout << "true : " << trueseq << std::endl;
         return a;
     }
 
-private:
-    char *trueseq;
-
-    void makerand(std::vector<char> alphabet)
+void Sequence::makerand(std::vector<char> alphabet)
     {
         srand(time(0));
         random_shuffle(alphabet.begin(), alphabet.end());
         for (int i = 0; i < 4; ++i)
             trueseq[i] = alphabet[i];
     }
-};
 
 #endif

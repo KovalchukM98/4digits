@@ -3,23 +3,22 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "sequence.cpp"
+#include "game.h"
+#include "sequence.h"
 
-class Game
+Game::Game()
 {
-public:
-	Game()
-	{
-		sec = new Sequence(alphabet);
-		turns = 0;
-	}
+	alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	sec = new Sequence(alphabet);
+	turns = 0;
+}
 
-	~Game()
-	{
-		delete sec;
-	}
+Game::~Game()
+{
+	delete sec;
+}
 
-	void join()
+void Game::join()
 	{
 		bool is_game_over = false;
 		int lenght = 4;
@@ -50,9 +49,8 @@ public:
 		delete input;
 	}
 
-private:
 
-	bool result_check(int *result){
+bool Game::result_check(int *result){
 		if( result[0] < 4){
 				std::cout << "\n" << "turn : " << turns << std::endl;
 				std::cout << "	bulls : " << result[0] << std::endl;
@@ -65,7 +63,7 @@ private:
 		return true;
 	}
 
-	bool is_valid(std::string str, int lenght)
+bool Game::is_valid(std::string str, int lenght)
 	{	
 		if( str.size() != static_cast<unsigned int>(lenght)){
 			return false;
@@ -96,10 +94,5 @@ private:
 		}
 		return true;
 	}
-
-	std::vector<char> alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-	Sequence *sec;
-	int turns;
-};
 
 #endif

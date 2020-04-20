@@ -7,17 +7,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "game.cpp"
+#include "menu.h"
+#include "game.h"
 
 using namespace std;
 
-class Menu{
-public:
-	Menu(){}
 
-	~Menu(){}
+Menu::Menu(){}
 
-	void join(){
+Menu::~Menu(){}
+
+void Menu::join(){
 		int key = 0;
 		string str;
 		bool flag = false;
@@ -48,7 +48,7 @@ public:
 		}
 	}
 
-	bool is_valid(string str){
+bool Menu::is_valid(string str){
 		if(str.size() > 1){
 			return false;
 		}
@@ -59,13 +59,13 @@ public:
 		return true;
 	}
 
-	void start(){
+void Menu::start(){
 		game = new Game;
 		game->join();
 		delete game;
 	}
 
-	void show_leader_board(){
+void Menu::show_leader_board(){
 		fstream in;
 		string str;
 		in.open("leaders.txt");
@@ -74,10 +74,6 @@ public:
     	}
 	}
 
-	void about(){}
-
-private:
-	Game *game;
-};
+void Menu::about(){}
 
 #endif
