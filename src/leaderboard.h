@@ -12,8 +12,9 @@ public:
     void show_leader_board();
     void compare();
     bool is_valid(std::string str);
-    void parser(std::fstream in);
+    void parser();
 private:
+    std::fstream in;
     std::pair<std::string, int> records[10];
 };
 

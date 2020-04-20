@@ -2,12 +2,37 @@
 #include "leaderboard.h"
 #include <fstream>
 #include <string>
+
+void Leaderboard::parser()
+{
+    in.open("records.txt");
+    int i = 0;
+    std::string str;
+    while (std::getline(in, str))
+    {
+        if (!is_valid(str)) {
+            continue;
+        }
+        std::cout << "str  " << str << std::endl;
+        records[i].first = str;
+        int space = str.find(" ");
+        records[i].first.erase(space, str.length());
+        str.erase(0, space);
+        for (unsigned int j = 0; j < str.length(); ++j) {
+            records[i].second *= 10;
+            records[i].second += 49 - str[j];
+        }
+        // records[i].second = atoi(str);
+        i++;
+    }
+    in.close();
+}
 Leaderboard::Leaderboard()
 {
-    std::fstream in;
-    in.open("records.txt");
-    Leaderboard::parser(in);
-    in.close();
+
+    
+    Leaderboard::parser();
+    
 
 }
 
@@ -53,25 +78,3 @@ void Leaderboard::compare()
 
 }
 
-void Leaderboard::parser(std::fstream in)
-{
-    int i = 0;
-    std::string str;
-    while(std::getline(in,str))
-    {
-        if(!is_valid(str)){
-            continue;
-        }
-        std:: cout << "str  " << str << std::endl;
-        records[i].first = str;
-        int space = str.find(" ");
-        records[i].first.erase(space, str.length());
-        str.erase(0, space);
-        for(unsigned int j = 0 ; j < str.length() ; ++j){
-            records[i].second *= 10;
-            records[i].second += 49 - str[j];
-        }
-        // records[i].second = atoi(str);
-        i++;
-    }
-}
