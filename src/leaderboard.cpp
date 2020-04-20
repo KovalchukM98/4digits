@@ -82,25 +82,47 @@ bool Leaderboard::is_name_valid(std::string name)
     }
     return true;
 }
+
+void Leaderboard::add(int turns , int pos){
+    std::cout << "Введите имя: \n";
+    std::string name;
+    do {
+        getline(std::cin,name);
+        if(!is_name_valid(name))
+        {
+            std::cout << "Некорректный ввод\n";
+            continue;
+            }
+    } while(!is_name_valid(name));
+    std::pair<std::string, int> buffer;
+    buffer.first = records[pos].first;
+    buffer.second = records[pos].second;
+    records[pos].first = name;
+    records[pos].second = turns;
+    pos++;
+    while(pos < 10 || records[pos].second > 0){
+        std::string tmp_str = records[pos].first;
+        int tmp_int = records[pos].second;
+        records[pos].first = buffer.first;
+        records[pos].second = buffer.second;
+        buffer.first = tmp_str;
+        buffer.second = tmp_int;
+        ++pos;
+    }
+}
+
 void Leaderboard::compare(int turns)
 {
     for(int i = 0; i < 10; ++i)
     {
         if(records[i].second == 0)
         {
-            std::cout << "Введите имя: \n";
-            std::string name;
-            do {
-                getline(std::cin,name);
-                if(!is_name_valid(name))
-                {
-                    std::cout << "Некорректный ввод\n";
-                    continue;
-                }
-            } while(!is_name_valid(name));
-            records[i].first = name;
-            records[i].second = turns;
+            add(turns, i);
+            break;
         }
-    
+        if(records[i].second > turns){
+            add(turns , i);
+            break;
+        }
     }
 }

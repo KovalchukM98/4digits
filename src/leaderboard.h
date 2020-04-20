@@ -14,6 +14,7 @@ public:
     bool is_valid(std::string str);
     void parser();
     bool is_name_valid(std::string name);
+    void add(int value , int pos);
 private:
     std::fstream in;
     std::pair<std::string, int> records[10];
