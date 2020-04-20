@@ -41,7 +41,7 @@ int Menu::join(){
 				start();
 				break;
 				case 2 :
-				show_leader_board();
+				leaderboard->show_leader_board();
 				break;
 				case 3:
 				about();
@@ -50,6 +50,7 @@ int Menu::join(){
 				flag = true;
 			}
 		}
+		return 0;
 	}
 
 bool Menu::is_valid(string str){
@@ -65,7 +66,7 @@ bool Menu::is_valid(string str){
 
 void Menu::start(){
 		game = new Game;
-		int res = game->join();
+		/*int res = */game->join();
 		delete game;
 	}
 

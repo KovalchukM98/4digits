@@ -47,6 +47,7 @@ int Game::join()
 		std::cout << "your turns : " << turns << "\n" << std::endl;
 		//leaders_board.compare(turns);  ????
 		delete input;
+		return 0;
 	}
 
 

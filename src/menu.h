@@ -16,8 +16,6 @@ public:
 
 	void start();
 
-	void show_leader_board();
-
 	void about();
 
 private:

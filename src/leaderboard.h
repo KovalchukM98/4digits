@@ -2,6 +2,8 @@
 #define LEADERBOARD_H
 #include <utility>
 #include <string>
+#include <fstream>
+
 class Leaderboard
 {
 public:
