@@ -9,14 +9,20 @@
 #include <string>
 #include "menu.h"
 #include "game.h"
+#include "leaderboard.h"
 
 using namespace std;
 
-Menu::Menu(){}
+Menu::Menu(){
+	leaderboard = new Leaderboard;
+}
 
-Menu::~Menu(){}
+Menu::~Menu(){
+	delete leaderboard;
+}
 
-void Menu::join(){
+
+int Menu::join(){
 		int key = 0;
 		std::string str;
 		bool flag = false;
@@ -36,7 +42,7 @@ void Menu::join(){
 				start();
 				break;
 				case 2 :
-				show_leader_board();
+				leaderboard->show_leader_board();
 				break;
 				case 3:
 				about();
@@ -45,6 +51,7 @@ void Menu::join(){
 				flag = true;
 			}
 		}
+		return 0;
 	}
 
 bool Menu::is_valid(string str){
@@ -60,17 +67,9 @@ bool Menu::is_valid(string str){
 
 void Menu::start(){
 		game = new Game;
-		game->join();
+		int res = game->join();
+		leaderboard->compare(res);
 		delete game;
-	}
-
-void Menu::show_leader_board(){
-		fstream in;
-		string str;
-		in.open("leaders.txt");
-		while(std::getline(in , str)){
-			std::cout << str << std::endl;
-    	}
 	}
 
 void Menu::about(){}

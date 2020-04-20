@@ -3,25 +3,24 @@
 
 #include <string>
 #include "game.h"
-
+#include "leaderboard.h"
 class Menu{
 public:
 	Menu();
 
 	~Menu();
 
-	void join();
+	int join();
 
 	bool is_valid(std::string str);
 
 	void start();
 
-	void show_leader_board();
-
 	void about();
 
 private:
 	Game *game;
+	Leaderboard *leaderboard;
 };
 
 #endif

@@ -11,7 +11,7 @@ public:
 
 	~Game();
 
-	void join();
+	int join();
 
 private:
 	bool is_valid(std::string str, int lenght);

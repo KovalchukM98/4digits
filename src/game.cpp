@@ -19,7 +19,7 @@ Game::~Game()
 	delete sec;
 }
 
-void Game::join()
+int Game::join()
 	{
 		bool is_game_over = false;
 		int lenght = 4;
@@ -45,8 +45,7 @@ void Game::join()
 		}
 		std::cout << input << " is right answer" << std::endl;
 		std::cout << "your turns : " << turns << "\n" << std::endl;
-		//leaders_board.compare(turns);  ????
-		delete input;
+		return turns;
 	}
 
 
