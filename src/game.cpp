@@ -40,7 +40,7 @@ public:
 			{
 				input[i] = str[i];
 			}
-			result = sec->check(input, lenght);
+			result = sec->count_bulls_and_cows(input, lenght);
 			is_game_over = result_check(result);
 			delete[] result;
 		}

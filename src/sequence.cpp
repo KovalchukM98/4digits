@@ -19,7 +19,7 @@ public:
     {
         delete[] trueseq;
     }
-    int *check(char *input, int n)
+    int *count_bulls_and_cows(char *input, int n)
     {
         int bulls = 0, cows = 0;
         for (int i = 0; i < n; ++i)
