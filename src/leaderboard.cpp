@@ -76,7 +76,7 @@ bool Leaderboard::is_name_valid(std::string name)
     {
         return false;
     }
-    if(name.find(" ") != -1)
+    if(name.find(" ") != std::string::npos)
     {
         return false;
     }
@@ -90,19 +90,17 @@ void Leaderboard::compare(int turns)
         {
             std::cout << "Введите имя: \n";
             std::string name;
-            while(getline(std::cin,name))
-            {
+            do {
+                getline(std::cin,name);
                 if(!is_name_valid(name))
                 {
                     std::cout << "Некорректный ввод\n";
                     continue;
                 }
-
-            }
+            } while(!is_name_valid(name));
             records[i].first = name;
             records[i].second = turns;
         }
     
     }
 }
-
