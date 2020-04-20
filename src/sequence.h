@@ -10,7 +10,7 @@ public:
 
     ~Sequence();
 
-    int *check(char *input, int n);
+    int *count_bulls_and_cows(char *input, int n);
 
 private:
     void makerand(std::vector<char> alphabet);

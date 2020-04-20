@@ -17,7 +17,7 @@ Sequence::~Sequence()
     {
         delete[] trueseq;
     }
-    int* Sequence::check(char *input, int n)
+    int* Sequence::count_bulls_and_cows(char *input, int n)
     {
         int bulls = 0, cows = 0;
         for (int i = 0; i < n; ++i)
