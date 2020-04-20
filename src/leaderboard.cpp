@@ -5,22 +5,21 @@
 
 void Leaderboard::parser()
 {
-    in.open("records.txt");
+    in.open("src/records.txt");
     int i = 0;
     std::string str;
-    while (std::getline(in, str))
+    while (getline(in, str))
     {
         if (!is_valid(str)) {
             continue;
         }
-        std::cout << "str  " << str << std::endl;
         records[i].first = str;
         int space = str.find(" ");
         records[i].first.erase(space, str.length());
-        str.erase(0, space);
+        str.erase(0, space+1);
         for (unsigned int j = 0; j < str.length(); ++j) {
             records[i].second *= 10;
-            records[i].second += 49 - str[j];
+            records[i].second += str[j] - 48;
         }
         // records[i].second = atoi(str);
         i++;
@@ -29,11 +28,7 @@ void Leaderboard::parser()
 }
 Leaderboard::Leaderboard()
 {
-
-    
     Leaderboard::parser();
-    
-
 }
 
 Leaderboard::~Leaderboard()
@@ -47,7 +42,10 @@ Leaderboard::~Leaderboard()
 void Leaderboard::show_leader_board()
 {
     for(int i = 0; i < 10;++i)
-    {
+    {   
+        if(records[i].second == 0){
+            break;
+        }
         std::cout << i+1 << ") " << records[i].first << " " << records[i].second << std::endl; 
     }
     std::cout << std::endl;
