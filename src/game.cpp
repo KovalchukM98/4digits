@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <utility>
 #include "game.h"
 #include "sequence.h"
 
@@ -23,7 +24,7 @@ void Game::join()
 		bool is_game_over = false;
 		int lenght = 4;
 		char *input = new char[lenght];
-		int *result;
+		std::pair<int,int> result;
 		std::string str;
 		while (!is_game_over)
 		{
@@ -41,7 +42,6 @@ void Game::join()
 			}
 			result = sec->count_bulls_and_cows(input, lenght);
 			is_game_over = result_check(result);
-			delete[] result;
 		}
 		std::cout << input << " is right answer" << std::endl;
 		std::cout << "your turns : " << turns << "\n" << std::endl;
@@ -50,11 +50,11 @@ void Game::join()
 	}
 
 
-bool Game::result_check(int *result){
-		if( result[0] < 4){
+bool Game::result_check(std::pair<int,int> result){
+		if( result.first < 4){
 				std::cout << "\n" << "turn : " << turns << std::endl;
-				std::cout << "	bulls : " << result[0] << std::endl;
-				std::cout << "	cows  :" << result[1] << "\n" << std::endl;
+				std::cout << "	bulls : " << result.first << std::endl;
+				std::cout << "	cows  :" << result.second << "\n" << std::endl;
 				return false;
 		}
 		else{

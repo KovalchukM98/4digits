@@ -5,6 +5,7 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
+#include <utility>
 #include "sequence.h"
 
 Sequence::Sequence(std::vector<char> alphabet)
@@ -17,7 +18,8 @@ Sequence::~Sequence()
     {
         delete[] trueseq;
     }
-    int* Sequence::count_bulls_and_cows(char *input, int n)
+
+    std::pair<int,int> Sequence::count_bulls_and_cows(char *input, int n)
     {
         int bulls = 0, cows = 0;
         for (int i = 0; i < n; ++i)
@@ -38,10 +40,9 @@ Sequence::~Sequence()
                 }
             }
         }
-        int *a;
-        a = new int[2];
-        a[0] = bulls;
-        a[1] = cows;
+        std::pair<int ,int> a;
+        a.first = bulls;
+        a.second = cows;
         // std::cout << "true : " << trueseq << std::endl;
         return a;
     }

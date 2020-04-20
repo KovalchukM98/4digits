@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <utility>
 #include "sequence.h"
 
 class Game
@@ -15,7 +16,7 @@ public:
 private:
 	bool is_valid(std::string str, int lenght);
 
-	bool result_check(int *result);
+	bool result_check(std::pair<int,int> result);
 	
 	std::vector<char> alphabet;
 	Sequence *sec;

@@ -1,6 +1,7 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
+#include <utility>
 #include <vector>
 
 class Sequence
@@ -10,7 +11,7 @@ public:
 
     ~Sequence();
 
-    int *count_bulls_and_cows(char *input, int n);
+    std::pair<int,int> count_bulls_and_cows(char *input, int n);
 
 private:
     void makerand(std::vector<char> alphabet);
