@@ -3,7 +3,7 @@
 
 #include "sequence.h"
 #include <utility>
-
+#include <string>
 class Game {
 public:
     Game();
