@@ -2,8 +2,8 @@
 #define GAME_H
 
 #include "sequence.h"
-#include <utility>
 #include <string>
+#include <utility>
 class Game {
 public:
     Game();
