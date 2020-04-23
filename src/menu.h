@@ -1,26 +1,26 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <string>
 #include "game.h"
 #include "leaderboard.h"
-class Menu{
+#include <string>
+class Menu {
 public:
-	Menu();
+    Menu();
 
-	~Menu();
+    ~Menu();
 
-	int join();
+    int join();
 
-	bool is_valid(std::string str);
+    bool is_valid(std::string str);
 
-	void start();
+    void start();
 
-	void about();
+    void about();
 
 private:
-	Game *game;
-	Leaderboard *leaderboard;
+    Game* game;
+    Leaderboard* leaderboard;
 };
 
 #endif

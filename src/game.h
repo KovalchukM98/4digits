@@ -1,26 +1,25 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <utility>
 #include "sequence.h"
+#include <utility>
 
-class Game
-{
+class Game {
 public:
-	Game();
+    Game();
 
-	~Game();
+    ~Game();
 
-	int join();
+    int join();
 
 private:
-	bool is_valid(std::string str, int lenght);
+    bool is_valid(std::string str, int lenght);
 
-	bool result_check(std::pair<int,int> result);
-	
-	std::vector<char> alphabet;
-	Sequence *sec;
-	int turns;
+    bool result_check(std::pair<int, int> result);
+
+    std::vector<char> alphabet;
+    Sequence* sec;
+    int turns;
 };
 
 #endif
