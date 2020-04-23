@@ -5,7 +5,7 @@
 
 void Leaderboard::parser()
 {
-    in.open("src/records.txt");
+    in.open("data/records.txt");
     int i = 0;
     std::string str;
     while (getline(in, str)) {
