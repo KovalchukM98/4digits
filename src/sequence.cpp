@@ -5,9 +5,9 @@
 #include <ctime>
 #include <iostream>
 #include <random>
+#include <string>
 #include <utility>
 #include <vector>
-#include <string>
 
 Sequence::Sequence(std::vector<char> alphabet)
 {

@@ -27,7 +27,7 @@ int Game::join()
     std::string input;
     while (!is_game_over) {
         input = get_input(lenght);
-        if (input.size() == 0){
+        if (input.size() == 0) {
             continue;
         }
         input.erase(lenght, input.size());
@@ -38,7 +38,8 @@ int Game::join()
     return turns;
 }
 
-std::string Game::get_input(int lenght){
+std::string Game::get_input(int lenght)
+{
     std::cout << "enter " << lenght << " numbers from 0 to 9 " << std::endl;
     std::string input;
     getline(std::cin, input);
@@ -49,7 +50,7 @@ std::string Game::get_input(int lenght){
     return input;
 }
 
-bool Game::result_show(std::pair<int, int> result, std::string input,int turns)
+bool Game::result_show(std::pair<int, int> result, std::string input, int turns)
 {
     if (result.first < 4) {
         std::cout << "\n"
