@@ -7,6 +7,7 @@
 #include <random>
 #include <utility>
 #include <vector>
+#include <string>
 
 Sequence::Sequence(std::vector<char> alphabet)
 {
@@ -19,7 +20,7 @@ Sequence::~Sequence()
     delete[] trueseq;
 }
 
-std::pair<int, int> Sequence::count_bulls_and_cows(char* input, int n)
+std::pair<int, int> Sequence::count_bulls_and_cows(std::string input, int n)
 {
     int bulls = 0, cows = 0;
     for (int i = 0; i < n; ++i) {

@@ -29,13 +29,13 @@ int Menu::join()
     std::string str;
     bool flag = false;
     while (!flag) {
-        std::cout << "1 новая игра" << std::endl;
-        std::cout << "2 таблица рекордов" << std::endl;
-        std::cout << "3 о программе" << std::endl;
-        std::cout << "4 выход" << std::endl;
+        std::cout << "1 new game" << std::endl;
+        std::cout << "2 leaders board" << std::endl;
+        std::cout << "3 about program" << std::endl;
+        std::cout << "4 exit" << std::endl;
         std::getline(std::cin, str);
         if (!is_valid(str)) {
-            std::cout << "некорректный ввод" << std::endl;
+            std::cout << "invalid input" << std::endl;
             continue;
         }
         key = str[0] - 48;

@@ -23,29 +23,26 @@ int Game::join()
 {
     bool is_game_over = false;
     int lenght = 4;
-    char* input = new char[lenght];
     std::pair<int, int> result;
-    std::string str;
+    std::string input;
     while (!is_game_over) {
-        std::cout << "введите " << lenght << " числа от 0 до 9 " << std::endl;
-        getline(std::cin, str);
-        if (!is_valid(str, lenght)) {
-            std::cout << "некорректный ввод" << std::endl;
+        std::cout << "enter " << lenght << " numbers from 0 to 9 " << std::endl;
+        getline(std::cin, input);
+        if (!is_valid(input, lenght)) {
+            std::cout << "invalid input" << std::endl;
             continue;
         }
+        input.erase(lenght, input.size());
         turns++;
-        for (int i = 0; i < lenght; ++i) {
-            input[i] = str[i];
-        }
         result = sec->count_bulls_and_cows(input, lenght);
-        is_game_over = result_check(result);
+        is_game_over = result_show(result);
     }
     std::cout << input << " is right answer" << std::endl;
     std::cout << "your turns : " << turns << "\n" << std::endl;
     return turns;
 }
 
-bool Game::result_check(std::pair<int, int> result)
+bool Game::result_show(std::pair<int, int> result)
 {
     if (result.first < 4) {
         std::cout << "\n"

@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <vector>
+#include <string>
 
 class Sequence {
 public:
@@ -10,7 +11,7 @@ public:
 
     ~Sequence();
 
-    std::pair<int, int> count_bulls_and_cows(char* input, int n);
+    std::pair<int, int> count_bulls_and_cows(std::string input, int n);
 
 private:
     void makerand(std::vector<char> alphabet);
