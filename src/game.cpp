@@ -26,23 +26,30 @@ int Game::join()
     std::pair<int, int> result;
     std::string input;
     while (!is_game_over) {
-        std::cout << "enter " << lenght << " numbers from 0 to 9 " << std::endl;
-        getline(std::cin, input);
-        if (!is_valid(input, lenght)) {
-            std::cout << "invalid input" << std::endl;
+        input = get_input(lenght);
+        if (input.size() == 0){
             continue;
         }
         input.erase(lenght, input.size());
         turns++;
         result = sec->count_bulls_and_cows(input, lenght);
-        is_game_over = result_show(result);
+        is_game_over = result_show(result, input, turns);
     }
-    std::cout << input << " is right answer" << std::endl;
-    std::cout << "your turns : " << turns << "\n" << std::endl;
     return turns;
 }
 
-bool Game::result_show(std::pair<int, int> result)
+std::string Game::get_input(int lenght){
+    std::cout << "enter " << lenght << " numbers from 0 to 9 " << std::endl;
+    std::string input;
+    getline(std::cin, input);
+    if (!is_valid(input, lenght)) {
+        std::cout << "invalid input" << std::endl;
+        input.clear();
+    }
+    return input;
+}
+
+bool Game::result_show(std::pair<int, int> result, std::string input,int turns)
 {
     if (result.first < 4) {
         std::cout << "\n"
@@ -52,6 +59,8 @@ bool Game::result_show(std::pair<int, int> result)
         return false;
     } else {
         std::cout << "\n 	You win!" << std::endl;
+        std::cout << input << " is right answer" << std::endl;
+        std::cout << "your turns : " << turns << "\n" << std::endl;
     }
     return true;
 }

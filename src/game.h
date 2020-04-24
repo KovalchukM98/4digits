@@ -15,7 +15,9 @@ public:
 private:
     bool is_valid(std::string str, int lenght);
 
-    bool result_check(std::pair<int, int> result);
+    std::string get_input(int lenght);
+
+    bool result_show(std::pair<int, int> result, std::string input, int turns);
 
     std::vector<char> alphabet;
     Sequence* sec;
