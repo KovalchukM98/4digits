@@ -11,8 +11,6 @@
 #include <string.h>
 #include <string>
 
-using namespace std;
-
 Menu::Menu()
 {
     leaderboard = new Leaderboard;
@@ -56,7 +54,7 @@ int Menu::join()
     return 0;
 }
 
-bool Menu::is_valid(string str)
+bool Menu::is_valid(std::string str)
 {
     if (str.size() > 1) {
         return false;
