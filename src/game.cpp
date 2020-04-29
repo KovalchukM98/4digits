@@ -34,7 +34,7 @@ int Game::join()
         input.erase(input.size());
         turns++;
         result = sec->count_bulls_and_cows(input);
-        is_game_over = result_show(result, input, turns);
+        is_game_over = result_show(result, input);
     }
     return turns;
 }
@@ -51,9 +51,9 @@ std::string Game::get_input()
     return input;
 }
 
-bool Game::result_show(std::pair<int, int> result, std::string input, int turns)
+bool Game::result_show(std::pair<int, int> result, std::string input)
 {
-    if (result.first < 4) {
+    if (result.first < seq_lenght) {
         std::cout << "\n"
                   << "turn : " << turns << std::endl;
         std::cout << "	bulls : " << result.first << std::endl;

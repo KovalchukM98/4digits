@@ -17,7 +17,7 @@ private:
 
     std::string get_input();
 
-    bool result_show(std::pair<int, int> result, std::string input, int turns);
+    bool result_show(std::pair<int, int> result, std::string input);
 
     std::vector<char> alphabet;
     Sequence* sec;
