@@ -1,5 +1,6 @@
-#include <menu.h>
+#include <game.h>
 #include <gtest/gtest.h>
+#include <menu.h>
 #include <string>
 
 TEST(MENU, isValid)
