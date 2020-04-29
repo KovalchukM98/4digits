@@ -64,7 +64,7 @@ void Menu::settings()
     std::string str;
     bool is_valid = false;
     int in;
-    while(!is_valid){
+    while (!is_valid) {
         std::cout << "enter new lenght of sequence from 2 to 9" << std::endl;
         std::getline(std::cin, str);
         if (str.size() > 1) {
@@ -73,7 +73,7 @@ void Menu::settings()
         }
         in = str[0] - 48;
         for (int i = 2; i < 10; ++i) {
-            if (in == i){
+            if (in == i) {
                 is_valid = true;
                 break;
             }
@@ -104,6 +104,15 @@ void Menu::start()
 
 void Menu::about()
 {
+    std::string line;
+
+    std::ifstream in("data/about.txt");
+    if (in.is_open()) {
+        while (getline(in, line)) {
+            std::cout << line << std::endl;
+        }
+    }
+    in.close();
 }
 
 #endif
