@@ -1,80 +1,54 @@
 #ifndef SEQUENCE
 #define SEQUENCE
+#include "sequence.h"
+#include <algorithm>
+#include <ctime>
 #include <iostream>
 #include <random>
-#include <ctime>
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
-
-class Sequence
+Sequence::Sequence(std::vector<char> alphabet, int lenght)
 {
-public:
-    Sequence()
-    {
-        trueseq = new char[4];
-        makerand();
-    }
+    seq_lenght = lenght;
+    trueseq = new char[seq_lenght];
+    makerand(alphabet);
+}
 
-    ~Sequence()
-    {
-        delete[] trueseq;
-    }
-    int *check(char *input, int n)
-    {
-        int bulls = 0, cows = 0;
-        for (int i = 0; i < n; ++i)
-        {
-            for (int j = 0; j < n; ++j)
-            {
-                if (i != j)
-                {
-                    if (input[i] == trueseq[j])
-                    {
-                        ++cows;
-                    }
-                }
-                else
-                {
-                    if (input[i] == trueseq[j])
-                        ++bulls;
-                }
-            }
-        }
-        int *a;
-        a = new int[2];
-        a[0] = bulls;
-        a[1] = cows;
-        // cout << "true : " << trueseq << endl;
-        return a;
-    }
+Sequence::~Sequence()
+{
+    delete[] trueseq;
+}
 
-private:
-    char *trueseq;
-
-    void makerand()
-    {
-        srand(time(0));
-        bool is;
-        int element;
-        for (int i = 0; i < 4;)
-        {
-            is = false;
-            element = rand() % 9;
-            for (int j = 0; j < i; ++j)
-            {
-                if (trueseq[j] == (element + '0'))
-                {
-                    is = true;
-                    break;
+std::pair<int, int> Sequence::count_bulls_and_cows(std::string input)
+{
+    int bulls = 0, cows = 0;
+    for (int i = 0; i < seq_lenght; ++i) {
+        for (int j = 0; j < seq_lenght; ++j) {
+            if (i != j) {
+                if (input[i] == trueseq[j]) {
+                    ++cows;
                 }
-            }
-            if (!is)
-            {
-                trueseq[i] = element + '0';
-                ++i;
+            } else {
+                if (input[i] == trueseq[j])
+                    ++bulls;
             }
         }
     }
-};
+    std::pair<int, int> a;
+    a.first = bulls;
+    a.second = cows;
+    std::cout << "true : " << trueseq << std::endl;
+    return a;
+}
+
+void Sequence::makerand(std::vector<char> alphabet)
+{
+    srand(time(0));
+    std::random_shuffle(alphabet.begin(), alphabet.end());
+    for (int i = 0; i < seq_lenght; ++i)
+        trueseq[i] = alphabet[i];
+}
 
 #endif

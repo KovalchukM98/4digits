@@ -1,19 +1,49 @@
-all: bin/programm
+CFLAGS = -Wall -Werror --std=c++17
 
-bin/programm: build/main.o build/menu.o build/game.o build/sequence.o
-	g++ -Wall --std=c++17 -Werror build/main.o build/menu.o build/game.o build/sequence.o -o bin/programm
+USER_DIR_S = build/src
 
-build/main.o: src/main.cpp
-	g++ -Wall --std=c++17 -Werror -c src/main.cpp -o build/main.o
+EXECUTABLE = bin/program
 
-build/game.o: src/game.cpp
-	g++ -Wall --std=c++17 -Werror -c src/game.cpp -o build/game.o
+TESTS = bin/test
 
-build/menu.o: src/menu.cpp
-	g++ -Wall --std=c++17 -Werror -c src/menu.cpp -o build/menu.o
+USER_DIR_T = build/test
 
-build/sequence.o: src/game.cpp
-	g++ -Wall --std=c++17 -Werror -c src/sequence.cpp -o build/sequence.o
+GTEST_DIR = thirdparty/googletest
+
+GOOGLE_TEST_INCLUDE = thirdparty/googletest/include
+
+CPPFLAGS += -isystem thirdparty/googletest/include
+
+CXXFLAGS += -g -Wall -Wextra -pthread -std=c++17
+
+all: $(EXECUTABLE) $(TESTS)
+
+$(EXECUTABLE): $(USER_DIR_S)/main.o $(USER_DIR_S)/game.o  $(USER_DIR_S)/leaderboard.o  $(USER_DIR_S)/menu.o  $(USER_DIR_S)/sequence.o
+	g++ $(CFLAGS) $(USER_DIR_S)/main.o $(USER_DIR_S)/game.o  $(USER_DIR_S)/leaderboard.o  $(USER_DIR_S)/menu.o  $(USER_DIR_S)/sequence.o -o $(EXECUTABLE)
+
+$(USER_DIR_S)/main.o: src/main.cpp
+	g++ $(CFLAGS) -c src/main.cpp -o $(USER_DIR_S)/main.o
+
+$(USER_DIR_S)/game.o: src/game.cpp
+	g++ $(CFLAGS) -c src/game.cpp -o $(USER_DIR_S)/game.o
+
+$(USER_DIR_S)/leaderboard.o: src/leaderboard.cpp
+	g++ $(CFLAGS) -c src/leaderboard.cpp -o $(USER_DIR_S)/leaderboard.o
+
+$(USER_DIR_S)/menu.o: src/menu.cpp
+	g++ $(CFLAGS) -c src/menu.cpp -o $(USER_DIR_S)/menu.o
+
+$(USER_DIR_S)/sequence.o: src/sequence.cpp
+	g++ $(CFLAGS) -c src/sequence.cpp -o $(USER_DIR_S)/sequence.o
+
+
+$(TESTS): $(USER_DIR_T)/test.o
+	g++ $(CPPFLAGS) $(CXXFLAGS) -L$(GTEST_DIR)/lib -lgtest_main -lpthread $(USER_DIR_T)/test.o -o $(TESTS)
+
+$(USER_DIR_T)/test.o: test/test.cpp 
+	g++ $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/test.cpp -o $@
 
 clean:
-	rm -f *.o build/*.o
+	rm -rf $(USER_DIR_S)/*.o
+	rm -rf $(USER_DIR_T)/*.o
+	rm -rf bin/*

@@ -1,106 +1,96 @@
 #ifndef GAME
 #define GAME
-#include <string>
+#include "game.h"
+#include "sequence.h"
 #include <iostream>
-#include "sequence.cpp"
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
-
-class Game
+Game::Game(int lenght)
 {
-public:
-	Game()
-	{
-		sec = new Sequence;
-		turns = 0;
-	}
+    seq_lenght = lenght;
+    alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    sec = new Sequence(alphabet, seq_lenght);
+    turns = 0;
+}
 
-	~Game()
-	{
-		delete sec;
-	}
+Game::~Game()
+{
+    delete sec;
+}
 
-	void join()
-	{
-		bool flag = false;
-		int lenght = 4;
-		char *input = new char[lenght];
-		int *result;
-		string str;
-		while (!flag)
-		{
-			cout << "введите " << lenght << " числа от 0 до 9 " << endl;
-			getline(cin , str);
-			if (!is_valid(str, lenght))
-			{
-				cout << "некорректный ввод" << endl;
-				continue;
-			}
-			turns++;
-			for (int i = 0; i < lenght; ++i)
-			{
-				input[i] = str[i];
-			}
-			result = sec->check(input, lenght);
-			flag = result_check(result);
-			delete[] result;
-		}
-		cout << input << " is right answer" << endl;
-		cout << "turns : " << turns << "\n" << endl;
-		//leaders_board.compare(turns);  ????
-		delete input;
-	}
+int Game::join()
+{
+    bool is_game_over = false;
+    // int lenght = 4;
+    std::pair<int, int> result;
+    std::string input;
+    while (!is_game_over) {
+        input = get_input();
+        if (input.size() == 0) {
+            continue;
+        }
+        input.erase(input.size());
+        turns++;
+        result = sec->count_bulls_and_cows(input);
+        is_game_over = result_show(result, input);
+    }
+    return turns;
+}
 
-	bool result_check(int *result){
-		if( result[0] < 4){
-				cout << "\nturn : " << turns << endl;
-				cout << "	bulls : " << result[0] << endl;
-				cout << "	cows  :" << result[1] << "\n" << endl;
-				return false;
-		}
-		else{
-			cout << "\n 	You win!" << endl;
-		}
-		return true;
-	}
+std::string Game::get_input()
+{
+    std::cout << "enter " << seq_lenght << " numbers from 0 to 9 " << std::endl;
+    std::string input;
+    getline(std::cin, input);
+    if (!is_valid(input)) {
+        std::cout << "invalid input" << std::endl;
+        input.clear();
+    }
+    return input;
+}
 
-	bool is_valid(string str, int lenght)
-	{	
-		int k = str.size();
-		if( k != lenght){
-			return false;
-		}
-		for (int i = 0; i < lenght; ++i)
-		{
-			bool eq = false;
-			for (int j = i - 1; j >= 0; --j)
-			{
-				if (str[j] == str[i])
-				{
-					return false;
-				}
-			}
+bool Game::result_show(std::pair<int, int> result, std::string input)
+{
+    if (result.first < seq_lenght) {
+        std::cout << "\n"
+                  << "turn : " << turns << std::endl;
+        std::cout << "	bulls : " << result.first << std::endl;
+        std::cout << "	cows  :" << result.second << "\n" << std::endl;
+        return false;
+    } else {
+        std::cout << "\n 	You win!" << std::endl;
+        std::cout << input << " is right answer" << std::endl;
+        std::cout << "your turns : " << turns << "\n" << std::endl;
+    }
+    return true;
+}
 
-			for (int j = 0; j < 10; ++j)
-			{
-				if (str[i] == slovar[j])
-				{
-					eq = true;
-					break;
-				}
-			}
-			if (!eq)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
+bool Game::is_valid(std::string str)
+{
+    if (str.size() != static_cast<unsigned int>(seq_lenght)) {
+        return false;
+    }
+    for (int i = 0; i < seq_lenght; ++i) {
+        bool is_suitable_symbol = false;
+        for (int j = i - 1; j >= 0; --j) {
+            if (str[j] == str[i]) {
+                return false;
+            }
+        }
 
-private:
-	char slovar[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-	Sequence *sec;
-	int turns;
-};
+        for (int j = 0; j < 10; ++j) {
+            if (str[i] == alphabet[j]) {
+                is_suitable_symbol = true;
+                break;
+            }
+        }
+        if (!is_suitable_symbol) {
+            return false;
+        }
+    }
+    return true;
+}
 
 #endif
