@@ -23,3 +23,23 @@ TEST(LEADERBOARD, isNameInvalid)
     teststring = "wwwwwwwwwwwwwwww";
     ASSERT_EQ(false, testboard.is_name_valid(teststring));
 }
+
+TEST(LEADERBOARD, isValid)
+{
+    std::string teststring;
+    Leaderboard testboard;
+    teststring = "Name 10";
+    ASSERT_EQ(true, testboard.is_valid(teststring));
+    teststring = "200 10";
+    ASSERT_EQ(true, testboard.is_valid(teststring));
+}
+
+TEST(LEADERBOARD, isInvalid)
+{
+    std::string teststring;
+    Leaderboard testboard;
+    teststring = "1";
+    ASSERT_EQ(false, testboard.is_valid(teststring));
+    teststring = "";
+    ASSERT_EQ(false, testboard.is_valid(teststring));
+}
