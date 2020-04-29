@@ -21,7 +21,7 @@ public:
     void about();
 
 private:
-	int lenght;
+    int lenght;
     Game* game;
     Leaderboard* leaderboard;
 };
