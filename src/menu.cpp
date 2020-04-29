@@ -78,6 +78,9 @@ void Menu::settings()
                 break;
             }
         }
+        if (!is_valid) {
+            std::cout << "invalid input" << std::endl;
+        }
     }
     lenght = in;
 }
