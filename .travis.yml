@@ -6,11 +6,8 @@ sudo: required
 
 install: true
 
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libsfml-dev
-
 script:
   - make
   - ./bin/test
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
+  - git ls-files test/ | xargs clang-format -i && git diff --exit-code
