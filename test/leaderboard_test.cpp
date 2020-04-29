@@ -20,4 +20,6 @@ TEST(LEADERBOARD, isNameInvalid)
     Leaderboard testboard;
     teststring = " ";
     ASSERT_EQ(false, testboard.is_name_valid(teststring));
+    teststring = "wwwwwwwwwwwwwwww";
+    ASSERT_EQ(false, testboard.is_name_valid(teststring));
 }

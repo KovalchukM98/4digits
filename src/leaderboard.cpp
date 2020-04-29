@@ -67,7 +67,7 @@ bool Leaderboard::is_valid(std::string str)
 
 bool Leaderboard::is_name_valid(std::string name)
 {
-    if (name.size() == 0) {
+    if (name.size() == 0 && > 12) {
         return false;
     }
     if (name.find(" ") != std::string::npos) {
@@ -78,7 +78,7 @@ bool Leaderboard::is_name_valid(std::string name)
 
 void Leaderboard::add(int turns, int pos)
 {
-    std::cout << "Введите имя: \n";
+    std::cout << "Введите имя(не более 12 символов): \n";
     std::string name;
     do {
         getline(std::cin, name);
