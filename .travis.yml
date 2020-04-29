@@ -2,10 +2,6 @@ language: C++
 
 dist: xenial
 
-sudo: required
-
-install: true
-
 script:
   - make
   - ./bin/test
