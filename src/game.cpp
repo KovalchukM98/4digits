@@ -7,10 +7,11 @@
 #include <utility>
 #include <vector>
 
-Game::Game()
+Game::Game(int lenght)
 {
+    seq_lenght = lenght;
     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    sec = new Sequence(alphabet);
+    sec = new Sequence(alphabet, seq_lenght);
     turns = 0;
 }
 
@@ -22,28 +23,28 @@ Game::~Game()
 int Game::join()
 {
     bool is_game_over = false;
-    int lenght = 4;
+    // int lenght = 4;
     std::pair<int, int> result;
     std::string input;
     while (!is_game_over) {
-        input = get_input(lenght);
+        input = get_input();
         if (input.size() == 0) {
             continue;
         }
-        input.erase(lenght, input.size());
+        input.erase(input.size());
         turns++;
-        result = sec->count_bulls_and_cows(input, lenght);
+        result = sec->count_bulls_and_cows(input);
         is_game_over = result_show(result, input, turns);
     }
     return turns;
 }
 
-std::string Game::get_input(int lenght)
+std::string Game::get_input()
 {
-    std::cout << "enter " << lenght << " numbers from 0 to 9 " << std::endl;
+    std::cout << "enter " << seq_lenght << " numbers from 0 to 9 " << std::endl;
     std::string input;
     getline(std::cin, input);
-    if (!is_valid(input, lenght)) {
+    if (!is_valid(input)) {
         std::cout << "invalid input" << std::endl;
         input.clear();
     }
@@ -66,12 +67,12 @@ bool Game::result_show(std::pair<int, int> result, std::string input, int turns)
     return true;
 }
 
-bool Game::is_valid(std::string str, int lenght)
+bool Game::is_valid(std::string str)
 {
-    if (str.size() != static_cast<unsigned int>(lenght)) {
+    if (str.size() != static_cast<unsigned int>(seq_lenght)) {
         return false;
     }
-    for (int i = 0; i < lenght; ++i) {
+    for (int i = 0; i < seq_lenght; ++i) {
         bool is_suitable_symbol = false;
         for (int j = i - 1; j >= 0; --j) {
             if (str[j] == str[i]) {

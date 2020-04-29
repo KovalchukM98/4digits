@@ -9,9 +9,10 @@
 #include <utility>
 #include <vector>
 
-Sequence::Sequence(std::vector<char> alphabet)
+Sequence::Sequence(std::vector<char> alphabet, int lenght)
 {
-    trueseq = new char[4];
+    seq_lenght = lenght;
+    trueseq = new char[seq_lenght];
     makerand(alphabet);
 }
 
@@ -20,11 +21,11 @@ Sequence::~Sequence()
     delete[] trueseq;
 }
 
-std::pair<int, int> Sequence::count_bulls_and_cows(std::string input, int n)
+std::pair<int, int> Sequence::count_bulls_and_cows(std::string input)
 {
     int bulls = 0, cows = 0;
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
+    for (int i = 0; i < seq_lenght; ++i) {
+        for (int j = 0; j < seq_lenght; ++j) {
             if (i != j) {
                 if (input[i] == trueseq[j]) {
                     ++cows;
@@ -46,7 +47,7 @@ void Sequence::makerand(std::vector<char> alphabet)
 {
     srand(time(0));
     std::random_shuffle(alphabet.begin(), alphabet.end());
-    for (int i = 0; i < 4; ++i)
+    for (int i = 0; i < seq_lenght; ++i)
         trueseq[i] = alphabet[i];
 }
 

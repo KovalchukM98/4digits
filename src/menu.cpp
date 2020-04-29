@@ -14,6 +14,7 @@
 Menu::Menu()
 {
     leaderboard = new Leaderboard;
+    lenght = 4;
 }
 
 Menu::~Menu()
@@ -30,7 +31,8 @@ int Menu::join()
         std::cout << "1 new game" << std::endl;
         std::cout << "2 leaders board" << std::endl;
         std::cout << "3 about program" << std::endl;
-        std::cout << "4 exit" << std::endl;
+        std::cout << "4 settings" << std::endl;
+        std::cout << "5 exit" << std::endl;
         std::getline(std::cin, str);
         if (!is_valid(str)) {
             std::cout << "invalid input" << std::endl;
@@ -48,10 +50,36 @@ int Menu::join()
             about();
             break;
         case 4:
+            settings();
+            break;
+        case 5:
             flag = true;
         }
     }
     return 0;
+}
+
+void Menu::settings()
+{
+    std::string str;
+    bool is_valid = false;
+    int in;
+    while(!is_valid){
+        std::cout << "enter new lenght of sequence from 2 to 9" << std::endl;
+        std::getline(std::cin, str);
+        if (str.size() > 1) {
+            std::cout << "invalid input" << std::endl;
+            continue;
+        }
+        in = str[0] - 48;
+        for (int i = 2; i < 10; ++i) {
+            if (in == i){
+                is_valid = true;
+                break;
+            }
+        }
+    }
+    lenght = in;
 }
 
 bool Menu::is_valid(std::string str)
@@ -60,7 +88,7 @@ bool Menu::is_valid(std::string str)
         return false;
     }
     int key = str[0] - 48;
-    if (key < 1 || key > 4) {
+    if (key < 1 || key > 5) {
         return false;
     }
     return true;
@@ -68,7 +96,7 @@ bool Menu::is_valid(std::string str)
 
 void Menu::start()
 {
-    game = new Game;
+    game = new Game(lenght);
     int res = game->join();
     leaderboard->compare(res);
     delete game;

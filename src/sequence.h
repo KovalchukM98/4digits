@@ -7,15 +7,16 @@
 
 class Sequence {
 public:
-    Sequence(std::vector<char> alphabet);
+    Sequence(std::vector<char> alphabet, int lenght);
 
     ~Sequence();
 
-    std::pair<int, int> count_bulls_and_cows(std::string input, int n);
+    std::pair<int, int> count_bulls_and_cows(std::string input);
 
 private:
     void makerand(std::vector<char> alphabet);
     char* trueseq;
+    int seq_lenght;
 };
 
 #endif

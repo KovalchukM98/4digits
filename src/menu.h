@@ -16,9 +16,12 @@ public:
 
     void start();
 
+    void settings();
+
     void about();
 
 private:
+	int lenght;
     Game* game;
     Leaderboard* leaderboard;
 };
