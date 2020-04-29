@@ -67,7 +67,7 @@ bool Leaderboard::is_valid(std::string str)
 
 bool Leaderboard::is_name_valid(std::string name)
 {
-    if (name.size() == 0 && > 12) {
+    if (name.size() == 0 || name.size() > 12) {
         return false;
     }
     if (name.find(" ") != std::string::npos) {
