@@ -37,11 +37,12 @@ $(USER_DIR_S)/sequence.o: src/sequence.cpp
 	g++ $(CFLAGS) -c src/sequence.cpp -o $(USER_DIR_S)/sequence.o
 
 
-$(TESTS): $(USER_DIR_T)/test.o
-	g++ $(CPPFLAGS) $(CXXFLAGS) -L$(GTEST_DIR)/lib -lgtest_main -lpthread $(USER_DIR_T)/test.o -o $(TESTS)
+$(TESTS): $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o
+	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -L$(GTEST_DIR)/lib -lgtest_main -lpthread $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o -o $(TESTS)
 
-$(USER_DIR_T)/test.o: test/test.cpp 
-	g++ $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/test.cpp -o $@
+
+$(USER_DIR_T)/leaderboard_test.o: test/leaderboard_test.cpp
+	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/leaderboard_test.cpp -o $@
 
 clean:
 	rm -rf $(USER_DIR_S)/*.o
