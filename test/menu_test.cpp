@@ -11,22 +11,22 @@ TEST(MENU, is_menu_input_valid)
     std::string teststring;
     Menu test;
     teststring = "1";
-    ASSERT_EQ(true, test.is_menu_input_valid(teststring));
+    ASSERT_TRUE(test.is_menu_input_valid(teststring));
     teststring = "2";
-    ASSERT_EQ(true, test.is_menu_input_valid(teststring));
+    ASSERT_TRUE(test.is_menu_input_valid(teststring));
 }
 TEST(MENU, isInValid)
 {
     std::string teststring;
     Menu test;
     teststring = "12";
-    ASSERT_EQ(false, test.is_menu_input_valid(teststring));
+    ASSERT_FALSE(test.is_menu_input_valid(teststring));
     teststring = " ";
-    ASSERT_EQ(false, test.is_menu_input_valid(teststring));
+    ASSERT_FALSE(test.is_menu_input_valid(teststring));
     teststring = "a";
-    ASSERT_EQ(false, test.is_menu_input_valid(teststring));
+    ASSERT_FALSE(test.is_menu_input_valid(teststring));
     teststring = "6";
-    ASSERT_EQ(false, test.is_menu_input_valid(teststring));
+    ASSERT_FALSE(test.is_menu_input_valid(teststring));
 }
 
 TEST(MENU, is_settings_input_valid)
