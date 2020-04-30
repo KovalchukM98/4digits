@@ -15,7 +15,9 @@ Sequence::Sequence(std::vector<char> alphabet, int lenght)
     makerand(alphabet);
 }
 
-Sequence::~Sequence(){}
+Sequence::~Sequence()
+{
+}
 
 std::string Sequence::get_answer()
 {
