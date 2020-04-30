@@ -69,7 +69,6 @@ void Menu::settings()
         std::getline(std::cin, str);
         if (!is_settings_input_valid(str)) {
             std::cout << "invalid input" << std::endl;
-<<<<<<< HEAD
         } else {
             in = str[0];
             == == == =
@@ -77,7 +76,6 @@ void Menu::settings()
         else
         {
             in = str[0] - 48;
->>>>>>> f67399fc8f39051468269b826447523add47b826
             is_valid = true;
         }
     }
