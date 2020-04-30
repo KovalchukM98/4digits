@@ -29,9 +29,9 @@ TEST(LEADERBOARD, isDataValid)
     std::string teststring;
     Leaderboard testboard;
     teststring = "Name 10";
-    ASSERT_EQ(true, testboard.is_valid(teststring));
+    ASSERT_EQ(true, testboard.is_data_valid(teststring));
     teststring = "200 10";
-    ASSERT_EQ(true, testboard.is_valid(teststring));
+    ASSERT_EQ(true, testboard.is_data_valid(teststring));
 }
 
 TEST(LEADERBOARD, isDataInvalid)
@@ -39,7 +39,7 @@ TEST(LEADERBOARD, isDataInvalid)
     std::string teststring;
     Leaderboard testboard;
     teststring = "1";
-    ASSERT_EQ(false, testboard.is_valid(teststring));
+    ASSERT_EQ(false, testboard.is_data_valid(teststring));
     teststring = "";
-    ASSERT_EQ(false, testboard.is_valid(teststring));
+    ASSERT_EQ(false, testboard.is_data_valid(teststring));
 }
