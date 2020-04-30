@@ -24,7 +24,7 @@ TEST(LEADERBOARD, isNameInvalid)
     ASSERT_EQ(false, testboard.is_name_valid(teststring));
 }
 
-TEST(LEADERBOARD, isValid)
+TEST(LEADERBOARD, isDataValid)
 {
     std::string teststring;
     Leaderboard testboard;
@@ -34,7 +34,7 @@ TEST(LEADERBOARD, isValid)
     ASSERT_EQ(true, testboard.is_valid(teststring));
 }
 
-TEST(LEADERBOARD, isInvalid)
+TEST(LEADERBOARD, isDataInvalid)
 {
     std::string teststring;
     Leaderboard testboard;

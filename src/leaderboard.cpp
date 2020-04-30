@@ -9,7 +9,8 @@ void Leaderboard::parser()
     int i = 0;
     std::string str;
     while (getline(in, str)) {
-        if (!is_valid(str)) {
+        if (!is_data_valid(str)) {
+            std::cout << "Invalid data!\n";
             continue;
         }
         records[i].first = str;
@@ -49,16 +50,14 @@ void Leaderboard::show_leader_board()
     }
     std::cout << std::endl;
 }
-bool Leaderboard::is_valid(std::string str)
+bool Leaderboard::is_data_valid(std::string str)
 {
     int space = str.find(" ");
     if (space < 1) {
-        std::cout << "Invalid input!\n";
         return false;
     }
     for (unsigned int i = space + 1; i < str.length(); ++i) {
         if (!isdigit(str[i])) {
-            std::cout << "Invalid input!\n";
             return false;
         }
     }

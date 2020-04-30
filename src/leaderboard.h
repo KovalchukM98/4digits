@@ -10,7 +10,7 @@ public:
     ~Leaderboard();
     void show_leader_board();
     void compare(int turns);
-    bool is_valid(std::string str);
+    bool is_data_valid(std::string str);
     void parser();
     bool is_name_valid(std::string name);
     void add(int value, int pos);
