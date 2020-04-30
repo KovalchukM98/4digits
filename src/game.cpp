@@ -30,7 +30,7 @@ int Game::join()
         turns++;
         result = sec->count_bulls_and_cows(input);
         result_show(result, input);
-        if(result.first == seq_lenght){
+        if (result.first == seq_lenght) {
             is_game_over = true;
         }
     }
@@ -45,7 +45,8 @@ std::string Game::get_input()
     while (!is_valid(input)) {
         std::cout << "invalid input" << std::endl;
         input.clear();
-        std::cout << "enter " << seq_lenght << " numbers from 0 to 9 " << std::endl;
+        std::cout << "enter " << seq_lenght << " numbers from 0 to 9 "
+                  << std::endl;
         getline(std::cin, input);
     }
     return input;
