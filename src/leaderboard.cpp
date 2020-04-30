@@ -28,6 +28,7 @@ void Leaderboard::parser()
 }
 Leaderboard::Leaderboard()
 {
+    clear();
     Leaderboard::parser();
 }
 
@@ -62,11 +63,21 @@ std::pair<std::string, int> Leaderboard::get_record(int pos)
 {
     std::pair<std::string, int> out;
     if (pos < 0 || pos > 9) {
+        out.first = " ";
+        out.second = 0;
         return out;
     }
     out.first = records[pos].first;
     out.second = records[pos].second;
     return out;
+}
+
+void Leaderboard::clear()
+{
+    for(int i = 0; i < 10; ++i){
+        records[i].first = " ";
+        records[i].second = 0;
+    }
 }
 
 bool Leaderboard::is_data_valid(std::string str)
@@ -116,13 +127,21 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     records[pos].first = name;
     records[pos].second = turns;
     pos++;
-    while (pos < 10 || records[pos].second > 0) {
+    while (pos < 10) {
+        if (records[pos].second == 0) {
+            records[pos].first = buffer.first;
+            records[pos].second = buffer.second;
+            break;
+        }
         std::string tmp_str = records[pos].first;
         int tmp_int = records[pos].second;
+
         records[pos].first = buffer.first;
         records[pos].second = buffer.second;
+
         buffer.first = tmp_str;
         buffer.second = tmp_int;
+        
         ++pos;
     }
 }
