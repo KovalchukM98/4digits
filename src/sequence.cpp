@@ -48,10 +48,8 @@ void Sequence::makerand(std::vector<char> alphabet)
 {
     srand(time(0));
     std::random_shuffle(alphabet.begin(), alphabet.end());
-    char tmp;
     for (int i = 0; i < seq_lenght; ++i) {
-        tmp = alphabet[i];
-        trueseq.push_back(tmp);
+        trueseq.push_back(alphabet[i]);
     }
 }
 
