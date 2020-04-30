@@ -39,7 +39,7 @@ TEST(LEADERBOARD, Insert)
     testboard.insert(teststring, testurns, pos);
     ASSERT_EQ(testboard.get_record(3).second, 50);
     teststring = "SMTHNG";
-    ASSERT_EQ(get_record(3).first, teststring);
+    ASSERT_EQ(testboard.get_record(3).first, teststring);
 }
 TEST(LEADERBOARD, isNameInvalid)
 {
