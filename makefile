@@ -44,8 +44,8 @@ $(TESTS): $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DI
 $(USER_DIR_T)/leaderboard_test.o: test/leaderboard_test.cpp
 	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/leaderboard_test.cpp -o $@
 
-$(USER_DIR_T)/leaderboard_test.o: test/leaderboard_test.cpp
-	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/leaderboard_test.cpp -o $@
+$(USER_DIR_T)/menu_test.o: test/menu_test.cpp
+	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/menu_test.cpp -o $@
 
 $(USER_DIR_T)/sequence_test.o: test/sequence_test.cpp
 	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/sequence_test.cpp -o $@
