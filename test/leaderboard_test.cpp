@@ -16,7 +16,25 @@ TEST(LEADERBOARD, isNameValid)
     teststring = "123";
     ASSERT_TRUE(testboard.is_name_valid(teststring));
 }
-
+TEST(LEADERBOARD, Insert)
+{
+    std::string teststring;
+    std::string testname;
+    Leaderboard testboard;
+    teststring = "Name";
+    int testurns = 10;
+    int pos = 1;
+    testboard.insert(teststring, testurns, pos);
+    std::cout << testname;
+    ASSERT_EQ(testboard.get_record(pos).second, 10);
+    ASSERT_EQ(testboard.get_record(pos).first, teststring);
+    teststring = "SMTHNG";
+    pos = 2;
+    testurns = 50;
+    testboard.insert(teststring, testurns, pos);
+    ASSERT_EQ(testboard.get_record(pos).second, 50);
+    ASSERT_EQ(testboard.get_record(pos).first, teststring);
+}
 TEST(LEADERBOARD, isNameInvalid)
 {
     std::string teststring;
