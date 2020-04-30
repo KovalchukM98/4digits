@@ -63,7 +63,6 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
         return false;
     } else {
         std::cout << "\n 	You win!" << std::endl;
-        std::cout << input << " is right answer" << std::endl;
         std::cout << "your turns : " << turns << "\n" << std::endl;
     }
     return true;

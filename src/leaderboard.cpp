@@ -74,7 +74,7 @@ std::pair<std::string, int> Leaderboard::get_record(int pos)
 
 void Leaderboard::clear()
 {
-    for(int i = 0; i < 10; ++i){
+    for (int i = 0; i < 10; ++i) {
         records[i].first = " ";
         records[i].second = 0;
     }
@@ -141,7 +141,7 @@ void Leaderboard::insert(std::string name, int turns, int pos)
 
         buffer.first = tmp_str;
         buffer.second = tmp_int;
-        
+
         ++pos;
     }
 }
