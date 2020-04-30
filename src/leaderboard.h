@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <utility>
+#include <string>
 
 class Leaderboard {
 public:
@@ -13,7 +14,8 @@ public:
     bool is_data_valid(std::string str);
     void parser();
     bool is_name_valid(std::string name);
-    void add(int value, int pos);
+    std::string get_name();
+    void insert(std::string name, int turns, int pos);
 
 private:
     std::fstream in;

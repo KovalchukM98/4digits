@@ -75,7 +75,7 @@ bool Leaderboard::is_name_valid(std::string name)
     return true;
 }
 
-void Leaderboard::add(int turns, int pos)
+std::string Leaderboard::get_name()
 {
     std::cout << "Введите имя(не более 12 символов): \n";
     std::string name;
@@ -86,6 +86,11 @@ void Leaderboard::add(int turns, int pos)
             continue;
         }
     } while (!is_name_valid(name));
+    return name;
+}
+
+void Leaderboard::insert(std::string name, int turns, int pos)
+{
     std::pair<std::string, int> buffer;
     buffer.first = records[pos].first;
     buffer.second = records[pos].second;
@@ -107,11 +112,13 @@ void Leaderboard::compare(int turns)
 {
     for (int i = 0; i < 10; ++i) {
         if (records[i].second == 0) {
-            add(turns, i);
+            std::string name = get_name();
+            insert(name, turns, i);
             break;
         }
         if (records[i].second > turns) {
-            add(turns, i);
+            std::string name = get_name();
+            insert(name, turns, i);
             break;
         }
     }
