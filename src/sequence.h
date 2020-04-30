@@ -13,9 +13,12 @@ public:
 
     std::pair<int, int> count_bulls_and_cows(std::string input);
 
+    std::string get_answer();
+
 private:
     void makerand(std::vector<char> alphabet);
-    char* trueseq;
+
+    std::string trueseq;
     int seq_lenght;
 };
 

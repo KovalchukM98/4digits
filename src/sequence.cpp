@@ -12,13 +12,14 @@
 Sequence::Sequence(std::vector<char> alphabet, int lenght)
 {
     seq_lenght = lenght;
-    trueseq = new char[seq_lenght];
     makerand(alphabet);
 }
 
-Sequence::~Sequence()
+Sequence::~Sequence(){}
+
+std::string Sequence::get_answer()
 {
-    delete[] trueseq;
+    return trueseq;
 }
 
 std::pair<int, int> Sequence::count_bulls_and_cows(std::string input)
@@ -47,8 +48,11 @@ void Sequence::makerand(std::vector<char> alphabet)
 {
     srand(time(0));
     std::random_shuffle(alphabet.begin(), alphabet.end());
-    for (int i = 0; i < seq_lenght; ++i)
-        trueseq[i] = alphabet[i];
+    char tmp;
+    for (int i = 0; i < seq_lenght; ++i) {
+        tmp = alphabet[i];
+        trueseq.push_back(tmp);
+    }
 }
 
 #endif
