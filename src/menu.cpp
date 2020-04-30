@@ -69,8 +69,7 @@ void Menu::settings()
         std::getline(std::cin, str);
         if (!is_settings_input_valid(str)) {
             std::cout << "invalid input" << std::endl;
-        }
-        else {
+        } else {
             in = str[0];
             is_valid = true;
         }
