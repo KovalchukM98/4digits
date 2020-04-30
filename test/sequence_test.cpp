@@ -7,7 +7,6 @@
 
 TEST(SEQUENCE, count_bulls_and_cows)
 {
-
 }
 
 #endif
