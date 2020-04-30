@@ -109,13 +109,21 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     records[pos].first = name;
     records[pos].second = turns;
     pos++;
-    while (pos < 10 || records[pos].second > 0) {
+    while (pos < 10) {
+        if (records[pos].second == 0) {
+            records[pos].first = buffer.first;
+            records[pos].second = buffer.second;
+            break;
+        }
         std::string tmp_str = records[pos].first;
         int tmp_int = records[pos].second;
+
         records[pos].first = buffer.first;
         records[pos].second = buffer.second;
+
         buffer.first = tmp_str;
         buffer.second = tmp_int;
+        
         ++pos;
     }
 }
