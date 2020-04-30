@@ -50,6 +50,18 @@ void Leaderboard::show_leader_board()
     }
     std::cout << std::endl;
 }
+
+std::pair<std::string, int> Leaderboard::get_record(int pos)
+{
+    std::pair<std::string, int> out;
+    if (pos < 0 || pos > 9) {
+        return out;
+    }
+    out.first = records[pos].first;
+    out.second = records[pos].second;
+    return out;
+}
+
 bool Leaderboard::is_data_valid(std::string str)
 {
     int space = str.find(" ");

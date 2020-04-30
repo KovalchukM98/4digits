@@ -15,6 +15,7 @@ public:
     bool is_name_valid(std::string name);
     std::string get_name();
     void insert(std::string name, int turns, int pos);
+    std::pair<std::string, int> get_record(int pos);
 
 private:
     std::fstream in;
