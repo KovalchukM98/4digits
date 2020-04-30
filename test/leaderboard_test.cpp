@@ -1,3 +1,6 @@
+#ifndef LEADERBOARD_TEST
+#define LEADERBOARD_TEST
+
 #include <gtest/gtest.h>
 #include <leaderboard.h>
 #include <string>
@@ -43,3 +46,5 @@ TEST(LEADERBOARD, isDataInvalid)
     teststring = "";
     ASSERT_EQ(false, testboard.is_data_valid(teststring));
 }
+
+#endif

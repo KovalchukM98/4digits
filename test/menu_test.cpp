@@ -1,3 +1,6 @@
+#ifndef MENU_TEST
+#define MENU_TEST
+
 #include <game.h>
 #include <gtest/gtest.h>
 #include <menu.h>
@@ -41,3 +44,5 @@ TEST(MENU, is_settings_input_valid)
     str.clear();
     ASSERT_FALSE(test_menu.is_settings_input_valid(str));
 }
+
+#endif
