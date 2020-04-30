@@ -27,19 +27,19 @@ TEST(LEADERBOARD, Insert)
     testboard.insert(teststring, testurns, pos);
     ASSERT_EQ(testboard.get_record(pos).second, 10);
     ASSERT_EQ(testboard.get_record(pos).first, teststring);
-    // teststring = "SMTHNG";
-    // pos = 2;
-    // testurns = 50;
-    // testboard.insert(teststring, testurns, pos);
-    // ASSERT_EQ(testboard.get_record(pos).second, 50);
-    // ASSERT_EQ(testboard.get_record(pos).first, teststring);
-    // teststring = "yes";
-    // pos = 2;
-    // testurns = 40;
-    // testboard.insert(teststring, testurns, pos);
-    // ASSERT_EQ(testboard.get_record(3).second, 50);
-    // teststring = "SMTHNG";
-    // ASSERT_EQ(testboard.get_record(3).first, teststring);
+    for (int i = 0; i < 9; ++i) {
+        teststring = "Name";
+        teststring += std::to_string(i);
+        testurns = 50 + i;
+        testboard.insert(teststring, testurns, pos);
+    }
+    teststring = "Name50";
+    testurns = 50;
+    testboard.insert(teststring, testurns, pos);
+    teststring = "Name40";
+    testurns = 40;
+    testboard.insert(teststring, testurns, pos);
+    ASSERT_EQ(testboard.get_record(9).first, "Name50");
 }
 TEST(LEADERBOARD, isNameInvalid)
 {
