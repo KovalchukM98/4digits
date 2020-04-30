@@ -21,7 +21,6 @@ void Leaderboard::parser()
             records[i].second *= 10;
             records[i].second += str[j] - 48;
         }
-        // records[i].second = atoi(str);
         i++;
     }
     in.close();
