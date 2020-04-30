@@ -26,7 +26,6 @@ int Game::join()
     std::pair<int, int> result;
     std::string input;
     while (!is_game_over) {
-        std::cout << "true = " << sec->get_answer() << std::endl;
         input = get_input();
         turns++;
         result = sec->count_bulls_and_cows(input);
@@ -63,6 +62,7 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
         return false;
     } else {
         std::cout << "\n 	You win!" << std::endl;
+        std::cout << input << " is right answer" << std::endl;
         std::cout << "your turns : " << turns << "\n" << std::endl;
     }
     return true;
