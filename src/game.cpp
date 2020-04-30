@@ -23,7 +23,6 @@ Game::~Game()
 int Game::join()
 {
     bool is_game_over = false;
-    // int lenght = 4;
     std::pair<int, int> result;
     std::string input;
     while (!is_game_over) {

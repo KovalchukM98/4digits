@@ -71,7 +71,7 @@ void Menu::settings()
             std::cout << "invalid input" << std::endl;
         }
         else {
-            in = str[0];
+            in = str[0] - 48;
             is_valid = true;
         }
     }
