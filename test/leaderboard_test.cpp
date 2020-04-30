@@ -25,7 +25,6 @@ TEST(LEADERBOARD, Insert)
     int testurns = 10;
     int pos = 1;
     testboard.insert(teststring, testurns, pos);
-    std::cout << testname;
     ASSERT_EQ(testboard.get_record(pos).second, 10);
     ASSERT_EQ(testboard.get_record(pos).first, teststring);
     teststring = "SMTHNG";
