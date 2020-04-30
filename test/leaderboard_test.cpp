@@ -21,25 +21,31 @@ TEST(LEADERBOARD, Insert)
     std::string teststring;
     std::string testname;
     Leaderboard testboard;
+    testboard.clear();
     teststring = "Name";
     int testurns = 10;
     int pos = 1;
     testboard.insert(teststring, testurns, pos);
     ASSERT_EQ(testboard.get_record(pos).second, 10);
     ASSERT_EQ(testboard.get_record(pos).first, teststring);
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 0; i < 7; ++i) {
         teststring = "Name";
         teststring += std::to_string(i);
         testurns = 50 + i;
         testboard.insert(teststring, testurns, pos);
     }
+    ASSERT_EQ(testboard.get_record(9).first, " ");
+    ASSERT_EQ(testboard.get_record(9).second, 0);
     teststring = "Name50";
     testurns = 50;
     testboard.insert(teststring, testurns, pos);
+    ASSERT_EQ(testboard.get_record(9).first, "Name");
+    ASSERT_EQ(testboard.get_record(9).second, 10);
     teststring = "Name40";
     testurns = 40;
     testboard.insert(teststring, testurns, pos);
-    ASSERT_EQ(testboard.get_record(9).first, "Name50");
+    ASSERT_EQ(testboard.get_record(9).first, "Name0");
+    ASSERT_EQ(testboard.get_record(9).second, 50);
 }
 TEST(LEADERBOARD, isNameInvalid)
 {

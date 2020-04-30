@@ -12,6 +12,7 @@ public:
     void compare(int turns);
     bool is_data_valid(std::string str);
     void parser();
+    void clear();
     bool is_name_valid(std::string name);
     std::string get_name();
     void insert(std::string name, int turns, int pos);
