@@ -39,7 +39,7 @@ std::pair<int, int> Sequence::count_bulls_and_cows(std::string input)
     std::pair<int, int> a;
     a.first = bulls;
     a.second = cows;
-    std::cout << "true : " << trueseq << std::endl;
+    // std::cout << "true : " << trueseq << std::endl;
     return a;
 }
 
