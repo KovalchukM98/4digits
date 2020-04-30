@@ -38,7 +38,7 @@ $(USER_DIR_S)/sequence.o: src/sequence.cpp
 
 
 $(TESTS): $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o
-	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -L$(GTEST_DIR)/lib -lgtest_main -lpthread $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o -o $(TESTS)
+	g++ -lgcov --coverage $(CPPFLAGS) $(CXXFLAGS) -L$(GTEST_DIR)/lib -l gtest_main -l gtest -lpthread $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o -o $(TESTS)
 
 
 $(USER_DIR_T)/leaderboard_test.o: test/leaderboard_test.cpp
