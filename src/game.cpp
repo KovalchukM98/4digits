@@ -40,13 +40,12 @@ int Game::join()
 std::string Game::get_input()
 {
     std::string input;
-    std::cout << "enter " << seq_lenght << " numbers from 0 to 9 " << std::endl;
+    std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
     getline(std::cin, input);
     while (!is_valid(input)) {
-        std::cout << "invalid input" << std::endl;
+        std::cout << "invalid input\n";
         input.clear();
-        std::cout << "enter " << seq_lenght << " numbers from 0 to 9 "
-                  << std::endl;
+        std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
         getline(std::cin, input);
     }
     return input;
@@ -58,12 +57,12 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
         std::cout << "\n"
                   << "turn : " << turns << std::endl;
         std::cout << "	bulls : " << result.first << std::endl;
-        std::cout << "	cows  :" << result.second << "\n" << std::endl;
+        std::cout << "	cows  :" << result.second << "\n\n";
         return false;
     } else {
-        std::cout << "\n 	You win!" << std::endl;
-        std::cout << input << " is right answer" << std::endl;
-        std::cout << "your turns : " << turns << "\n" << std::endl;
+        std::cout << "\n 	You win!\n";
+        std::cout << input << " is right answer\n";
+        std::cout << "your turns : " << turns << "\n\n";
     }
     return true;
 }
