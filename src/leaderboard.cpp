@@ -1,5 +1,5 @@
 #include "leaderboard.h"
-
+const int MAX_POSITION = 10;
 void Leaderboard::parser()
 {
     in.open("data/records.txt");
@@ -32,7 +32,7 @@ Leaderboard::~Leaderboard()
 {
     std::fstream out;
     out.open("records.txt");
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < MAX_POSITION; i++) {
         std::string str;
         str += records[i].first;
         str += " ";
@@ -45,7 +45,7 @@ Leaderboard::~Leaderboard()
 
 void Leaderboard::show_leader_board()
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         if (records[i].second == 0) {
             break;
         }
@@ -70,7 +70,7 @@ std::pair<std::string, int> Leaderboard::get_record(int pos)
 
 void Leaderboard::clear()
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         records[i].first = " ";
         records[i].second = 0;
     }
@@ -123,7 +123,7 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     records[pos].first = name;
     records[pos].second = turns;
     pos++;
-    while (pos < 10) {
+    while (pos < MAX_POSITION) {
         if (records[pos].second == 0) {
             records[pos].first = buffer.first;
             records[pos].second = buffer.second;
@@ -144,7 +144,7 @@ void Leaderboard::insert(std::string name, int turns, int pos)
 
 void Leaderboard::compare(int turns)
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         if (records[i].second == 0) {
             std::string name = get_name();
             insert(name, turns, i);
