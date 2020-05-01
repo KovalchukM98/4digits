@@ -2,8 +2,10 @@
 #define GAME_H
 
 #include "sequence.h"
+#include <iostream>
 #include <string>
 #include <utility>
+#include <vector>
 class Game {
 public:
     Game(int lenght);

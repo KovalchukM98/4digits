@@ -1,13 +1,6 @@
 #ifndef SEQUENCE
 #define SEQUENCE
 #include "sequence.h"
-#include <algorithm>
-#include <ctime>
-#include <iostream>
-#include <random>
-#include <string>
-#include <utility>
-#include <vector>
 
 Sequence::Sequence(std::vector<char> alphabet, int lenght)
 {

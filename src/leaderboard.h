@@ -1,6 +1,7 @@
 #ifndef LEADERBOARD_H
 #define LEADERBOARD_H
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <utility>
 

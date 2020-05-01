@@ -1,7 +1,4 @@
 #include "leaderboard.h"
-#include <fstream>
-#include <iostream>
-#include <string>
 
 void Leaderboard::parser()
 {

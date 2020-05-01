@@ -1,6 +1,10 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
+#include <algorithm>
+#include <ctime>
+#include <iostream>
+#include <random>
 #include <string>
 #include <utility>
 #include <vector>

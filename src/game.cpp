@@ -2,10 +2,6 @@
 #define GAME
 #include "game.h"
 #include "sequence.h"
-#include <iostream>
-#include <string>
-#include <utility>
-#include <vector>
 
 Game::Game(int lenght)
 {

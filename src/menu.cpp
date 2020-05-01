@@ -2,14 +2,6 @@
 #define MENU
 
 #include "menu.h"
-#include "game.h"
-#include "leaderboard.h"
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
 
 Menu::Menu()
 {
