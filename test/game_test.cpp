@@ -8,7 +8,8 @@
 
 TEST(GAME, is_input_valid)
 {
-    std::vector<char> alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    std::vector<char> alphabet
+            = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     Game game(alphabet, 4);
     std::string str;
     ASSERT_FALSE(game.is_input_valid(str));

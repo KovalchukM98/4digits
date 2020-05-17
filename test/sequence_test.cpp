@@ -8,7 +8,8 @@
 
 TEST(SEQUENCE, count_bulls_and_cows)
 {
-    std::vector<char> alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    std::vector<char> alphabet
+            = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     Sequence sec(alphabet, 4);
     ASSERT_TRUE(sec.set_trueseq("1234"));
     std::string str = sec.get_answer();

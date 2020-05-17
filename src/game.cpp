@@ -14,7 +14,9 @@ Game::Game(std::vector<char> in_alph, int lenght)
     turns = 0;
 }
 
-Game::~Game(){}
+Game::~Game()
+{
+}
 
 void Game::set_lenght(int s)
 {

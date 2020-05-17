@@ -6,7 +6,9 @@ Sequence::Sequence(std::vector<char> alphabet, int lenght)
     makerand(alphabet);
 }
 
-Sequence::~Sequence(){}
+Sequence::~Sequence()
+{
+}
 
 std::string Sequence::get_answer()
 {
@@ -16,7 +18,7 @@ std::string Sequence::get_answer()
 bool Sequence::set_trueseq(std::string new_seq)
 {
     int size = new_seq.size();
-    if(size == seq_lenght){
+    if (size == seq_lenght) {
         trueseq = new_seq;
         return true;
     }

@@ -3,7 +3,7 @@ const int MAX_POSITION = 10;
 const std::string path = "data/records.txt";
 void Leaderboard::load_from_file(std::string path)
 {
-    in.open("");
+    in.open(path);
     int i = 0;
     std::string str;
     while (getline(in, str)) {
