@@ -4,38 +4,46 @@ const std::string path = "data/records.txt";
 void Leaderboard::load_from_file(std::string path)
 {
     in.open(path);
-    int i = 0;
-    std::string str;
-    while (getline(in, str)) {
-        if (!is_data_valid(str)) {
-            std::cout << "Invalid data!\n";
-            continue;
+    if (!(in.is_open())) {
+        std::cout << "File Not Found\n";
+    } else {
+        int i = 0;
+        std::string str;
+        while (getline(in, str)) {
+            if (!is_data_valid(str)) {
+                std::cout << "Invalid data!\n";
+                continue;
+            }
+            records[i].first = str;
+            int space = str.find(" ");
+            records[i].first.erase(space, str.length());
+            str.erase(0, space + 1);
+            for (unsigned int j = 0; j < str.length(); ++j) {
+                records[i].second *= 10;
+                records[i].second += str[j] - 48;
+            }
+            i++;
         }
-        records[i].first = str;
-        int space = str.find(" ");
-        records[i].first.erase(space, str.length());
-        str.erase(0, space + 1);
-        for (unsigned int j = 0; j < str.length(); ++j) {
-            records[i].second *= 10;
-            records[i].second += str[j] - 48;
-        }
-        i++;
+        in.close();
     }
-    in.close();
 }
 void Leaderboard::save_to_file(std::string path)
 {
     std::fstream out;
     out.open(path);
-    for (int i = 0; i < MAX_POSITION; i++) {
-        std::string str;
-        str += records[i].first;
-        str += " ";
-        str += std::to_string(records[i].second);
-        str += "\n";
-        out << str;
+    if (!(out.is_open())) {
+        std::cout << "File Not Found\n";
+    } else {
+        for (int i = 0; i < MAX_POSITION; i++) {
+            std::string str;
+            str += records[i].first;
+            str += " ";
+            str += std::to_string(records[i].second);
+            str += "\n";
+            out << str;
+        }
+        out.close();
     }
-    out.close();
 }
 Leaderboard::Leaderboard()
 {
