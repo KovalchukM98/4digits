@@ -1,23 +1,29 @@
-#ifndef GAME
-#define GAME
 #include "game.h"
 #include "sequence.h"
 
-Game::Game(int lenght)
+Game::Game()
 {
-    seq_lenght = lenght;
     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+}
+
+// Game::Game(int lenght)
+// {
+//     seq_lenght = lenght;
+//     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+//     sec = new Sequence(alphabet, seq_lenght);
+//     turns = 0;
+// }
+
+Game::~Game(){}
+
+void Game::set_lenght(int s){
+    seq_lenght = s;
+}
+
+int Game::play()
+{
     sec = new Sequence(alphabet, seq_lenght);
-    turns = 0;
-}
 
-Game::~Game()
-{
-    delete sec;
-}
-
-int Game::join()
-{
     bool is_game_over = false;
     std::pair<int, int> result;
     std::string input;
@@ -30,6 +36,7 @@ int Game::join()
             is_game_over = true;
         }
     }
+    delete sec;
     return turns;
 }
 
@@ -88,5 +95,3 @@ bool Game::is_valid(std::string str)
     }
     return true;
 }
-
-#endif
