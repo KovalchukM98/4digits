@@ -16,7 +16,6 @@ public:
 
     bool is_input_valid(std::string str, int minValid, int maxValid);
 
-
     void start();
 
     void settings();

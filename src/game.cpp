@@ -14,9 +14,12 @@ Game::Game()
 //     turns = 0;
 // }
 
-Game::~Game(){}
+Game::~Game()
+{
+}
 
-void Game::set_lenght(int s){
+void Game::set_lenght(int s)
+{
     seq_lenght = s;
 }
 

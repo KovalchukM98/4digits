@@ -5,7 +5,9 @@ Menu::Menu()
     lenght = 4;
 }
 
-Menu::~Menu(){}
+Menu::~Menu()
+{
+}
 
 int Menu::join()
 {
@@ -19,7 +21,7 @@ int Menu::join()
         std::cout << "4 settings\n";
         std::cout << "5 exit\n";
         std::getline(std::cin, str);
-        if (!is_input_valid(str,1,5)) {
+        if (!is_input_valid(str, 1, 5)) {
             std::cout << "invalid input\n";
             continue;
         }
@@ -52,7 +54,7 @@ void Menu::settings()
     while (!is_valid) {
         std::cout << "enter new lenght of sequence from 2 to 9\n";
         std::getline(std::cin, str);
-        if (!is_input_valid(str,2,9)) {
+        if (!is_input_valid(str, 2, 9)) {
             std::cout << "invalid input\n";
         } else {
             in = str[0] - 48;
