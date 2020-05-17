@@ -14,9 +14,7 @@ public:
 
     int join();
 
-    bool is_menu_input_valid(std::string str);
-
-    bool is_settings_input_valid(std::string str);
+    bool is_input_valid(std::string str, int minValid, int maxValid);
 
     void start();
 
