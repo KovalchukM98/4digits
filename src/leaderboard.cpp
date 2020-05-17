@@ -1,10 +1,10 @@
 #include "leaderboard.h"
 const int MAX_POSITION = 10;
-void Leaderboard::load_from_file()
+bool Leaderboard::load_from_file()
 {
     in.open(path);
     if (!(in.is_open())) {
-        std::cout << "File Not Found\n";
+        return false;
     } else {
         int i = 0;
         std::string str;
@@ -23,14 +23,15 @@ void Leaderboard::load_from_file()
             i++;
         }
         in.close();
+        return true;
     }
 }
-void Leaderboard::save_to_file()
+bool Leaderboard::save_to_file()
 {
     std::fstream out;
     out.open(path);
     if (!(out.is_open())) {
-        std::cout << "File Not Found\n";
+        return false;
     } else {
         for (int i = 0; i < MAX_POSITION; i++) {
             std::string str;
@@ -41,6 +42,7 @@ void Leaderboard::save_to_file()
             out << str;
         }
         out.close();
+        return true;
     }
 }
 Leaderboard::Leaderboard()
