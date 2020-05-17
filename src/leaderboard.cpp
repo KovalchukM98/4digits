@@ -51,7 +51,6 @@ Leaderboard::Leaderboard()
 
 Leaderboard::~Leaderboard()
 {
-    Leaderboard::save_to_file();
 }
 
 void Leaderboard::show_leader_board()

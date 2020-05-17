@@ -8,6 +8,7 @@ Menu::Menu()
 
 Menu::~Menu()
 {
+    leaderboard.save_to_file();
 }
 
 int Menu::join()

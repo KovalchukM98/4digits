@@ -25,7 +25,6 @@ public:
 private:
     int lenght;
     std::vector<char> alphabet;
-    // Game game;
     Leaderboard leaderboard;
 };
 
