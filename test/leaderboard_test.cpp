@@ -5,12 +5,6 @@
 #include <leaderboard.h>
 #include <string>
 
-TEST(LEADERBOARD, isFileOpen)
-{
-    Leaderboard testboard;
-    ASSERT_TRUE(testboard.load_from_file("data/records"));
-    ASSERT_FALSE(testboard.load_from_file("src/records"));
-}
 TEST(LEADERBOARD, isNameValid)
 {
     std::string str;
