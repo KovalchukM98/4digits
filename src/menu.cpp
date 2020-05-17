@@ -26,7 +26,7 @@ int Menu::join()
         std::cout << "4 settings\n";
         std::cout << "5 exit\n";
         std::getline(std::cin, str);
-        if (!is_menu_input_valid(str)) {
+        if (!is_input_valid(str,1,5)) {
             std::cout << "invalid input\n";
             continue;
         }
@@ -59,7 +59,7 @@ void Menu::settings()
     while (!is_valid) {
         std::cout << "enter new lenght of sequence from 2 to 9\n";
         std::getline(std::cin, str);
-        if (!is_settings_input_valid(str)) {
+        if (!is_input_valid(str,2,9)) {
             std::cout << "invalid input\n";
         } else {
             in = str[0] - 48;
@@ -69,27 +69,13 @@ void Menu::settings()
     lenght = in;
 }
 
-bool Menu::is_settings_input_valid(std::string str)
-{
-    if (str.size() > 1) {
-        return false;
-    }
-    int in = str[0] - 48;
-    for (int i = 2; i < 10; ++i) {
-        if (in == i) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Menu::is_menu_input_valid(std::string str)
+bool Menu::is_input_valid(std::string str, int minValid, int maxValid)
 {
     if (str.size() > 1) {
         return false;
     }
     int key = str[0] - 48;
-    if (key < 1 || key > 5) {
+    if (key < minValid || maxValid > 9) {
         return false;
     }
     return true;
