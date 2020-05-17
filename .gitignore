@@ -6,6 +6,8 @@
 *.lo
 *.o
 *.obj
+*.gcda
+*.gcno
 
 # Precompiled Headers
 *.gch
@@ -14,7 +16,6 @@
 # Fortran module files
 *.mod
 *.smod
-
 
 # Executables
 *.exe
@@ -25,3 +26,6 @@
 bin/*
 thirdparty/googletest/include/*
 thirdparty/googletest/*
+
+#data
+data/records.txt
