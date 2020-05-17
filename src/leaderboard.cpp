@@ -147,18 +147,15 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     }
 }
 
-void Leaderboard::compare(int turns)
+int Leaderboard::is_new_record(int turns)
 {
     for (int i = 0; i < MAX_POSITION; ++i) {
         if (records[i].second == 0) {
-            std::string name = get_name();
-            insert(name, turns, i);
-            break;
+            return i;
         }
         if (records[i].second > turns) {
-            std::string name = get_name();
-            insert(name, turns, i);
-            break;
+            return i;
         }
     }
+    return -1;
 }

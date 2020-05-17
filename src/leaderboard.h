@@ -10,7 +10,7 @@ public:
     Leaderboard();
     ~Leaderboard();
     void show_leader_board();
-    void compare(int turns);
+    int is_new_record(int turns);
     bool is_data_valid(std::string str);
     void load_from_file(std::string path);
     void clear();
