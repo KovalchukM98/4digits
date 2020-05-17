@@ -1,13 +1,4 @@
-#ifndef SEQUENCE
-#define SEQUENCE
 #include "sequence.h"
-#include <algorithm>
-#include <ctime>
-#include <iostream>
-#include <random>
-#include <string>
-#include <utility>
-#include <vector>
 
 Sequence::Sequence(std::vector<char> alphabet, int lenght)
 {
@@ -22,6 +13,16 @@ Sequence::~Sequence()
 std::string Sequence::get_answer()
 {
     return trueseq;
+}
+
+bool Sequence::set_trueseq(std::string new_seq)
+{
+    int size = new_seq.size();
+    if (size == seq_lenght) {
+        trueseq = new_seq;
+        return true;
+    }
+    return false;
 }
 
 std::pair<int, int> Sequence::count_bulls_and_cows(std::string input)
@@ -53,5 +54,3 @@ void Sequence::makerand(std::vector<char> alphabet)
         trueseq.push_back(alphabet[i]);
     }
 }
-
-#endif

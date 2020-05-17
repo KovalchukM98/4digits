@@ -1,25 +1,15 @@
-#ifndef MENU
-#define MENU
-
 #include "menu.h"
-#include "game.h"
-#include "leaderboard.h"
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
 
 Menu::Menu()
 {
-    leaderboard = new Leaderboard;
+    alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     lenght = 4;
+    leaderboard.load_from_file("data/records.txt");
 }
 
 Menu::~Menu()
 {
-    delete leaderboard;
+    leaderboard.save_to_file("data/records.txt");
 }
 
 int Menu::join()
@@ -28,14 +18,14 @@ int Menu::join()
     std::string str;
     bool flag = false;
     while (!flag) {
-        std::cout << "1 new game" << std::endl;
-        std::cout << "2 leaders board" << std::endl;
-        std::cout << "3 about program" << std::endl;
-        std::cout << "4 settings" << std::endl;
-        std::cout << "5 exit" << std::endl;
+        std::cout << "1 new game\n";
+        std::cout << "2 leaders board\n";
+        std::cout << "3 about program\n";
+        std::cout << "4 settings\n";
+        std::cout << "5 exit\n";
         std::getline(std::cin, str);
-        if (!is_menu_input_valid(str)) {
-            std::cout << "invalid input" << std::endl;
+        if (!is_input_valid(str, 1, 5)) {
+            std::cout << "invalid input\n";
             continue;
         }
         key = str[0] - 48;
@@ -44,7 +34,7 @@ int Menu::join()
             start();
             break;
         case 2:
-            leaderboard->show_leader_board();
+            leaderboard.show_leader_board();
             break;
         case 3:
             about();
@@ -65,10 +55,10 @@ void Menu::settings()
     bool is_valid = false;
     int in;
     while (!is_valid) {
-        std::cout << "enter new lenght of sequence from 2 to 9" << std::endl;
+        std::cout << "enter new lenght of sequence from 2 to 9\n";
         std::getline(std::cin, str);
-        if (!is_settings_input_valid(str)) {
-            std::cout << "invalid input" << std::endl;
+        if (!is_input_valid(str, 2, 9)) {
+            std::cout << "invalid input\n";
         } else {
             in = str[0] - 48;
             is_valid = true;
@@ -77,27 +67,13 @@ void Menu::settings()
     lenght = in;
 }
 
-bool Menu::is_settings_input_valid(std::string str)
-{
-    if (str.size() > 1) {
-        return false;
-    }
-    int in = str[0] - 48;
-    for (int i = 2; i < 10; ++i) {
-        if (in == i) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Menu::is_menu_input_valid(std::string str)
+bool Menu::is_input_valid(std::string str, int minValid, int maxValid)
 {
     if (str.size() > 1) {
         return false;
     }
     int key = str[0] - 48;
-    if (key < 1 || key > 5) {
+    if (key < minValid || key > maxValid) {
         return false;
     }
     return true;
@@ -105,10 +81,13 @@ bool Menu::is_menu_input_valid(std::string str)
 
 void Menu::start()
 {
-    game = new Game(lenght);
-    int res = game->join();
-    leaderboard->compare(res);
-    delete game;
+    Game game(alphabet, lenght);
+    int res = game.play();
+    int pos = leaderboard.is_new_record(res);
+    if (pos >= 0) {
+        std::string name = leaderboard.get_name();
+        leaderboard.insert(name, res, pos);
+    }
 }
 
 void Menu::about()
@@ -123,5 +102,3 @@ void Menu::about()
     }
     in.close();
 }
-
-#endif

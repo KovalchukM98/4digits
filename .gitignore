@@ -6,6 +6,8 @@
 *.lo
 *.o
 *.obj
+*.gcda
+*.gcno
 
 # Precompiled Headers
 *.gch
@@ -15,8 +17,15 @@
 *.mod
 *.smod
 
-
 # Executables
 *.exe
 *.out
 *.app
+
+# GTest
+bin/*
+thirdparty/googletest/include/*
+thirdparty/googletest/*
+
+#data
+data/records.txt

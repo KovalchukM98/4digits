@@ -1,54 +1,63 @@
 #include "leaderboard.h"
-#include <fstream>
-#include <iostream>
-#include <string>
-
-void Leaderboard::parser()
+const int MAX_POSITION = 10;
+bool Leaderboard::load_from_file(std::string path)
 {
-    in.open("data/records.txt");
-    int i = 0;
-    std::string str;
-    while (getline(in, str)) {
-        if (!is_data_valid(str)) {
-            std::cout << "Invalid data!\n";
-            continue;
+    std::fstream in;
+    in.open(path);
+    if (!(in.is_open())) {
+        return false;
+    } else {
+        int i = 0;
+        std::string str;
+        while (getline(in, str)) {
+            if (!is_data_valid(str)) {
+                continue;
+            }
+            records[i].first = str;
+            int space = str.find(" ");
+            records[i].first.erase(space, str.length());
+            str.erase(0, space + 1);
+            for (unsigned int j = 0; j < str.length(); ++j) {
+                records[i].second *= 10;
+                records[i].second += str[j] - 48;
+            }
+            i++;
         }
-        records[i].first = str;
-        int space = str.find(" ");
-        records[i].first.erase(space, str.length());
-        str.erase(0, space + 1);
-        for (unsigned int j = 0; j < str.length(); ++j) {
-            records[i].second *= 10;
-            records[i].second += str[j] - 48;
-        }
-        i++;
+        in.close();
+        return true;
     }
-    in.close();
+}
+bool Leaderboard::save_to_file(std::string path)
+{
+    std::fstream out;
+    out.open(path);
+    if (!(out.is_open())) {
+        return false;
+    } else {
+        for (int i = 0; i < MAX_POSITION; i++) {
+            std::string str;
+            str += records[i].first;
+            str += " ";
+            str += std::to_string(records[i].second);
+            str += "\n";
+            out << str;
+        }
+        out.close();
+        return true;
+    }
 }
 Leaderboard::Leaderboard()
 {
     clear();
-    Leaderboard::parser();
 }
 
 Leaderboard::~Leaderboard()
 {
-    std::fstream out;
-    out.open("records.txt");
-    for (int i = 0; i < 10; i++) {
-        std::string str;
-        str += records[i].first;
-        str += " ";
-        str += std::to_string(records[i].second);
-        str += "\n";
-        out << str;
-    }
-    out.close();
 }
 
 void Leaderboard::show_leader_board()
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         if (records[i].second == 0) {
             break;
         }
@@ -73,7 +82,7 @@ std::pair<std::string, int> Leaderboard::get_record(int pos)
 
 void Leaderboard::clear()
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         records[i].first = " ";
         records[i].second = 0;
     }
@@ -126,7 +135,7 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     records[pos].first = name;
     records[pos].second = turns;
     pos++;
-    while (pos < 10) {
+    while (pos < MAX_POSITION) {
         if (records[pos].second == 0) {
             records[pos].first = buffer.first;
             records[pos].second = buffer.second;
@@ -145,18 +154,15 @@ void Leaderboard::insert(std::string name, int turns, int pos)
     }
 }
 
-void Leaderboard::compare(int turns)
+int Leaderboard::is_new_record(int turns)
 {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < MAX_POSITION; ++i) {
         if (records[i].second == 0) {
-            std::string name = get_name();
-            insert(name, turns, i);
-            break;
+            return i;
         }
         if (records[i].second > turns) {
-            std::string name = get_name();
-            insert(name, turns, i);
-            break;
+            return i;
         }
     }
+    return -1;
 }

@@ -2,17 +2,23 @@
 #define GAME_H
 
 #include "sequence.h"
+#include <iostream>
 #include <string>
 #include <utility>
+#include <vector>
 class Game {
 public:
-    Game(int lenght);
+    Game();
+
+    Game(std::vector<char> alphabet, int lenght);
 
     ~Game();
 
-    int join();
+    int play();
 
-    bool is_valid(std::string str);
+    void set_lenght(int s);
+
+    bool is_input_valid(std::string str);
 
     std::string get_input();
 
@@ -20,7 +26,6 @@ public:
 
 private:
     std::vector<char> alphabet;
-    Sequence* sec;
     int turns;
     int seq_lenght;
 };

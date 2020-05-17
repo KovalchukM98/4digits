@@ -1,3 +1,10 @@
 player1 10
-player3 15
 player2 20
+player3 30
+  0
+  0
+  0
+  0
+  0
+  0
+  0
