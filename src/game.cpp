@@ -4,15 +4,8 @@
 Game::Game()
 {
     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    turns = 0;
 }
-
-// Game::Game(int lenght)
-// {
-//     seq_lenght = lenght;
-//     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-//     sec = new Sequence(alphabet, seq_lenght);
-//     turns = 0;
-// }
 
 Game::~Game(){}
 
@@ -22,7 +15,7 @@ void Game::set_lenght(int s){
 
 int Game::play()
 {
-    sec = new Sequence(alphabet, seq_lenght);
+    Sequence sec(alphabet, seq_lenght);
 
     bool is_game_over = false;
     std::pair<int, int> result;
@@ -30,13 +23,12 @@ int Game::play()
     while (!is_game_over) {
         input = get_input();
         turns++;
-        result = sec->count_bulls_and_cows(input);
+        result = sec.count_bulls_and_cows(input);
         result_show(result, input);
         if (result.first == seq_lenght) {
             is_game_over = true;
         }
     }
-    delete sec;
     return turns;
 }
 

@@ -26,7 +26,7 @@ public:
 
 private:
     std::vector<char> alphabet;
-    Sequence* sec;
+    // Sequence* sec;
     int turns;
     int seq_lenght;
 };
