@@ -60,8 +60,8 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
 {
     if (result.first < seq_lenght) {
         std::cout << "\n"
-                  << "turn : " << turns << std::endl;
-        std::cout << "	bulls : " << result.first << std::endl;
+                  << "turn : " << turns << "\n";
+        std::cout << "	bulls : " << result.first << "\n";
         std::cout << "	cows  :" << result.second << "\n\n";
         return false;
     } else {

@@ -62,9 +62,9 @@ void Leaderboard::show_leader_board()
             break;
         }
         std::cout << i + 1 << ") " << records[i].first << " "
-                  << records[i].second << std::endl;
+                  << records[i].second << "\n";
     }
-    std::cout << std::endl;
+    std::cout << "\n";
 }
 
 std::pair<std::string, int> Leaderboard::get_record(int pos)

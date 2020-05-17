@@ -18,14 +18,14 @@ int Menu::join()
     std::string str;
     bool flag = false;
     while (!flag) {
-        std::cout << "1 new game\n";
-        std::cout << "2 leaders board\n";
-        std::cout << "3 about program\n";
-        std::cout << "4 settings\n";
-        std::cout << "5 exit\n";
+        std::cout << "1. New game\n";
+        std::cout << "2. Leaders board\n";
+        std::cout << "3. About program\n";
+        std::cout << "4. Settings\n";
+        std::cout << "5. Exit\n";
         std::getline(std::cin, str);
         if (!is_input_valid(str, 1, 5)) {
-            std::cout << "invalid input\n";
+            std::cout << "Invalid input\n";
             continue;
         }
         key = str[0] - 48;
@@ -55,10 +55,10 @@ void Menu::settings()
     bool is_valid = false;
     int in;
     while (!is_valid) {
-        std::cout << "enter new lenght of sequence from 2 to 9\n";
+        std::cout << "Enter new lenght of sequence from 2 to 9\n";
         std::getline(std::cin, str);
         if (!is_input_valid(str, 2, 9)) {
-            std::cout << "invalid input\n";
+            std::cout << "Invalid input\n";
         } else {
             in = str[0] - 48;
             is_valid = true;
@@ -97,7 +97,7 @@ void Menu::about()
     std::ifstream in("data/about.txt");
     if (in.is_open()) {
         while (getline(in, line)) {
-            std::cout << line << std::endl;
+            std::cout << line << "\n";
         }
     }
     in.close();
