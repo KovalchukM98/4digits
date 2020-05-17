@@ -4,11 +4,12 @@ Menu::Menu()
 {
     alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     lenght = 4;
+    leaderboard.load_from_file("data/records.txt");
 }
 
 Menu::~Menu()
 {
-    leaderboard.save_to_file();
+    leaderboard.save_to_file("data/records.txt");
 }
 
 int Menu::join()
