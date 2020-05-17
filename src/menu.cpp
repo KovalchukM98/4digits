@@ -70,7 +70,7 @@ bool Menu::is_input_valid(std::string str, int minValid, int maxValid)
         return false;
     }
     int key = str[0] - 48;
-    if (key < minValid || maxValid > 9) {
+    if (key < minValid || key > 9) {
         return false;
     }
     return true;
