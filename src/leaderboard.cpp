@@ -1,8 +1,9 @@
 #include "leaderboard.h"
 const int MAX_POSITION = 10;
-void Leaderboard::parser()
+const std::string path = "data/records.txt";
+void Leaderboard::load_from_file(std::string path)
 {
-    in.open("data/records.txt");
+    in.open("");
     int i = 0;
     std::string str;
     while (getline(in, str)) {
@@ -22,16 +23,10 @@ void Leaderboard::parser()
     }
     in.close();
 }
-Leaderboard::Leaderboard()
-{
-    clear();
-    Leaderboard::parser();
-}
-
-Leaderboard::~Leaderboard()
+void Leaderboard::save_to_file(std::string path)
 {
     std::fstream out;
-    out.open("records.txt");
+    out.open(path);
     for (int i = 0; i < MAX_POSITION; i++) {
         std::string str;
         str += records[i].first;
@@ -41,6 +36,16 @@ Leaderboard::~Leaderboard()
         out << str;
     }
     out.close();
+}
+Leaderboard::Leaderboard()
+{
+    clear();
+    Leaderboard::load_from_file(path);
+}
+
+Leaderboard::~Leaderboard()
+{
+    Leaderboard::save_to_file(path);
 }
 
 void Leaderboard::show_leader_board()
