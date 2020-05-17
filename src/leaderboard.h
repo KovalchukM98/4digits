@@ -21,9 +21,7 @@ public:
     std::pair<std::string, int> get_record(int pos);
 
 private:
-    std::fstream in;
     std::pair<std::string, int> records[10];
-    // const std::string path = "data/records.txt";
 };
 
 #endif

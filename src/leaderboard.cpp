@@ -2,6 +2,7 @@
 const int MAX_POSITION = 10;
 bool Leaderboard::load_from_file(std::string path)
 {
+    std::fstream in;
     in.open(path);
     if (!(in.is_open())) {
         return false;
@@ -48,7 +49,6 @@ bool Leaderboard::save_to_file(std::string path)
 Leaderboard::Leaderboard()
 {
     clear();
-    // Leaderboard::load_from_file();
 }
 
 Leaderboard::~Leaderboard()
