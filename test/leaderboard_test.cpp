@@ -69,4 +69,18 @@ TEST(LEADERBOARD, isDataValid)
     ASSERT_FALSE(testboard.is_data_valid(str));
 }
 
+TEST(LEADERBOARD, load_from_file)
+{
+    Leaderboard board;
+    ASSERT_FALSE(board.load_from_file("false"));
+    board.clear();
+    ASSERT_TRUE(board.load_from_file("test/test_records.txt"));
+    ASSERT_EQ(board.get_record(0).first, "player1");
+    ASSERT_EQ(board.get_record(0).second, 10);
+    ASSERT_EQ(board.get_record(2).first, "player3");
+    ASSERT_EQ(board.get_record(2).second, 30);
+    ASSERT_EQ(board.get_record(5).first, " ");
+    ASSERT_EQ(board.get_record(5).second, 0);
+}
+
 #endif
