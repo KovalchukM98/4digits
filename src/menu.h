@@ -24,7 +24,7 @@ public:
 
 private:
     int lenght;
-    Game game;
+    // Game game;
     Leaderboard leaderboard;
 };
 

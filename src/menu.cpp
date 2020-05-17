@@ -78,6 +78,7 @@ bool Menu::is_input_valid(std::string str, int minValid, int maxValid)
 
 void Menu::start()
 {
+    Game game;
     game.set_lenght(lenght);
     int res = game.play();
     leaderboard.compare(res);
