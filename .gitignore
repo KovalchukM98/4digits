@@ -21,7 +21,6 @@
 *.exe
 *.out
 *.app
-data/records.txt
 
 # GTest
 bin/*
