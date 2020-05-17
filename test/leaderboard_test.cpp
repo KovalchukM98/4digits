@@ -26,7 +26,7 @@ TEST(LEADERBOARD, isNameValid)
 TEST(LEADERBOARD, is_new_record)
 {
     Leaderboard board;
-    ASSERT_TRUE(board.load_from_file("test/test_records.txt"));
+    ASSERT_TRUE(board.load_from_file("data/test_records.txt"));
     ASSERT_EQ(board.is_new_record(1), 0);
     ASSERT_EQ(board.is_new_record(10), 1);
     ASSERT_EQ(board.is_new_record(20), 2);
@@ -87,7 +87,7 @@ TEST(LEADERBOARD, load_from_file)
     Leaderboard board;
     ASSERT_FALSE(board.load_from_file("false"));
     board.clear();
-    ASSERT_TRUE(board.load_from_file("test/test_records.txt"));
+    ASSERT_TRUE(board.load_from_file("data/test_records.txt"));
     ASSERT_EQ(board.get_record(0).first, "player1");
     ASSERT_EQ(board.get_record(0).second, 10);
     ASSERT_EQ(board.get_record(2).first, "player3");
