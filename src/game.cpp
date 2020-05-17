@@ -45,7 +45,7 @@ std::string Game::get_input()
     std::string input;
     std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
     getline(std::cin, input);
-    while (!is_valid(input)) {
+    while (!is_input_valid(input)) {
         std::cout << "invalid input\n";
         input.clear();
         std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
@@ -70,7 +70,7 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
     return true;
 }
 
-bool Game::is_valid(std::string str)
+bool Game::is_input_valid(std::string str)
 {
     if (str.size() != static_cast<unsigned int>(seq_lenght)) {
         return false;

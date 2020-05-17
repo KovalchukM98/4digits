@@ -18,7 +18,7 @@ public:
 
     void set_lenght(int s);
 
-    bool is_valid(std::string str);
+    bool is_input_valid(std::string str);
 
     std::string get_input();
 
