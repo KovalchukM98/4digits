@@ -1,7 +1,6 @@
 #include "leaderboard.h"
 const int MAX_POSITION = 10;
-const std::string path = "data/records.txt";
-void Leaderboard::load_from_file(std::string path)
+void Leaderboard::load_from_file()
 {
     in.open(path);
     if (!(in.is_open())) {
@@ -27,7 +26,7 @@ void Leaderboard::load_from_file(std::string path)
         in.close();
     }
 }
-void Leaderboard::save_to_file(std::string path)
+void Leaderboard::save_to_file()
 {
     std::fstream out;
     out.open(path);
@@ -48,12 +47,12 @@ void Leaderboard::save_to_file(std::string path)
 Leaderboard::Leaderboard()
 {
     clear();
-    Leaderboard::load_from_file(path);
+    Leaderboard::load_from_file();
 }
 
 Leaderboard::~Leaderboard()
 {
-    Leaderboard::save_to_file(path);
+    Leaderboard::save_to_file();
 }
 
 void Leaderboard::show_leader_board()
