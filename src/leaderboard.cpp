@@ -10,7 +10,6 @@ void Leaderboard::load_from_file()
         std::string str;
         while (getline(in, str)) {
             if (!is_data_valid(str)) {
-                std::cout << "Invalid data!\n";
                 continue;
             }
             records[i].first = str;
