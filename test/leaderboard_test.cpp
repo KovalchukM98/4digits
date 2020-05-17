@@ -23,6 +23,19 @@ TEST(LEADERBOARD, isNameValid)
     ASSERT_FALSE(testboard.is_name_valid(str));
 }
 
+TEST(LEADERBOARD, is_new_record)
+{
+    Leaderboard board;
+    ASSERT_TRUE(board.load_from_file("test/test_records.txt"));
+    ASSERT_EQ(board.is_new_record(1), 0);
+    ASSERT_EQ(board.is_new_record(10), 1);
+    ASSERT_EQ(board.is_new_record(20), 2);
+    ASSERT_EQ(board.is_new_record(22), 2);
+    ASSERT_EQ(board.is_new_record(39), 3);
+    ASSERT_EQ(board.is_new_record(40), 4);
+    ASSERT_EQ(board.is_new_record(400), -1);
+}
+
 TEST(LEADERBOARD, Insert)
 {
     std::string str;
@@ -79,8 +92,8 @@ TEST(LEADERBOARD, load_from_file)
     ASSERT_EQ(board.get_record(0).second, 10);
     ASSERT_EQ(board.get_record(2).first, "player3");
     ASSERT_EQ(board.get_record(2).second, 30);
-    ASSERT_EQ(board.get_record(5).first, " ");
-    ASSERT_EQ(board.get_record(5).second, 0);
+    ASSERT_EQ(board.get_record(9).first, "player10");
+    ASSERT_EQ(board.get_record(9).second, 100);
 }
 
 #endif
