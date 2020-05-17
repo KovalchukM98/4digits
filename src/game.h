@@ -8,11 +8,15 @@
 #include <vector>
 class Game {
 public:
-    Game(int lenght);
+    Game();
+
+    // Game(int lenght);
 
     ~Game();
 
-    int join();
+    int play();
+
+    void set_lenght(int s);
 
     bool is_valid(std::string str);
 

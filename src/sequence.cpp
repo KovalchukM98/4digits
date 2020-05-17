@@ -1,5 +1,3 @@
-#ifndef SEQUENCE
-#define SEQUENCE
 #include "sequence.h"
 
 Sequence::Sequence(std::vector<char> alphabet, int lenght)
@@ -46,5 +44,3 @@ void Sequence::makerand(std::vector<char> alphabet)
         trueseq.push_back(alphabet[i]);
     }
 }
-
-#endif

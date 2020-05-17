@@ -1,18 +1,11 @@
-#ifndef MENU
-#define MENU
-
 #include "menu.h"
 
 Menu::Menu()
 {
-    leaderboard = new Leaderboard;
     lenght = 4;
 }
 
-Menu::~Menu()
-{
-    delete leaderboard;
-}
+Menu::~Menu(){}
 
 int Menu::join()
 {
@@ -36,7 +29,7 @@ int Menu::join()
             start();
             break;
         case 2:
-            leaderboard->show_leader_board();
+            leaderboard.show_leader_board();
             break;
         case 3:
             about();
@@ -97,10 +90,9 @@ bool Menu::is_menu_input_valid(std::string str)
 
 void Menu::start()
 {
-    game = new Game(lenght);
-    int res = game->join();
-    leaderboard->compare(res);
-    delete game;
+    game.set_lenght(lenght);
+    int res = game.play();
+    leaderboard.compare(res);
 }
 
 void Menu::about()
@@ -115,5 +107,3 @@ void Menu::about()
     }
     in.close();
 }
-
-#endif

@@ -26,8 +26,8 @@ public:
 
 private:
     int lenght;
-    Game* game;
-    Leaderboard* leaderboard;
+    Game game;
+    Leaderboard leaderboard;
 };
 
 #endif
