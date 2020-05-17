@@ -20,3 +20,8 @@
 *.exe
 *.out
 *.app
+
+# GTest
+bin/*
+thirdparty/googletest/include/*
+thirdparty/googletest/*
