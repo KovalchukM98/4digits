@@ -16,7 +16,6 @@ public:
 
     bool is_input_valid(std::string str, int minValid, int maxValid);
 
-
     void start();
 
     void settings();
@@ -25,8 +24,8 @@ public:
 
 private:
     int lenght;
-    Game* game;
-    Leaderboard* leaderboard;
+    std::vector<char> alphabet;
+    Leaderboard leaderboard;
 };
 
 #endif

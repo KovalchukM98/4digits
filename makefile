@@ -48,7 +48,7 @@ $(USER_DIR_T)/menu_test.o: test/menu_test.cpp
 	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/menu_test.cpp -o $@
 
 $(USER_DIR_T)/sequence_test.o: test/sequence_test.cpp
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GFLAGS) -I src -c test/sequence_test.cpp -o $@
+	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/sequence_test.cpp -o $@
 
 $(USER_DIR_T)/game_test.o: test/game_test.cpp
 	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/game_test.cpp -o $@

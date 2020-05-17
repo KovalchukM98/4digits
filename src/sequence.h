@@ -19,6 +19,8 @@ public:
 
     std::string get_answer();
 
+    bool set_trueseq(std::string new_seq);
+
 private:
     void makerand(std::vector<char> alphabet);
 

@@ -1,30 +1,39 @@
-#ifndef GAME
-#define GAME
 #include "game.h"
 #include "sequence.h"
 
-Game::Game(int lenght)
+Game::Game()
 {
+    seq_lenght = 4;
+    turns = 0;
+}
+
+Game::Game(std::vector<char> in_alph, int lenght)
+{
+    alphabet = in_alph;
     seq_lenght = lenght;
-    alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    sec = new Sequence(alphabet, seq_lenght);
     turns = 0;
 }
 
 Game::~Game()
 {
-    delete sec;
 }
 
-int Game::join()
+void Game::set_lenght(int s)
 {
+    seq_lenght = s;
+}
+
+int Game::play()
+{
+    Sequence sec(alphabet, seq_lenght);
+
     bool is_game_over = false;
     std::pair<int, int> result;
     std::string input;
     while (!is_game_over) {
         input = get_input();
         turns++;
-        result = sec->count_bulls_and_cows(input);
+        result = sec.count_bulls_and_cows(input);
         result_show(result, input);
         if (result.first == seq_lenght) {
             is_game_over = true;
@@ -38,7 +47,7 @@ std::string Game::get_input()
     std::string input;
     std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
     getline(std::cin, input);
-    while (!is_valid(input)) {
+    while (!is_input_valid(input)) {
         std::cout << "invalid input\n";
         input.clear();
         std::cout << "enter " << seq_lenght << " numbers from 0 to 9 \n";
@@ -63,7 +72,7 @@ bool Game::result_show(std::pair<int, int> result, std::string input)
     return true;
 }
 
-bool Game::is_valid(std::string str)
+bool Game::is_input_valid(std::string str)
 {
     if (str.size() != static_cast<unsigned int>(seq_lenght)) {
         return false;
@@ -88,5 +97,3 @@ bool Game::is_valid(std::string str)
     }
     return true;
 }
-
-#endif
