@@ -84,7 +84,7 @@ void Menu::start()
     Game game(alphabet, lenght);
     int res = game.play();
     int pos = leaderboard.is_new_record(res);
-    if(pos >= 0){
+    if (pos >= 0) {
         std::string name = leaderboard.get_name();
         leaderboard.insert(name, res, pos);
     }
