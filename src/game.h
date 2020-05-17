@@ -10,7 +10,7 @@ class Game {
 public:
     Game();
 
-    // Game(int lenght);
+    Game(std::vector<char> alphabet, int lenght);
 
     ~Game();
 

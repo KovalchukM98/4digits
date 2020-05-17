@@ -3,7 +3,14 @@
 
 Game::Game()
 {
-    alphabet = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    seq_lenght = 4;
+    turns = 0;
+}
+
+Game::Game(std::vector<char> in_alph, int lenght)
+{
+    alphabet = in_alph;
+    seq_lenght = lenght;
     turns = 0;
 }
 
