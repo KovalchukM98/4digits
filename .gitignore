@@ -5,6 +5,7 @@
 *.slo
 *.lo
 *.o
+*.a
 *.obj
 *.gcda
 *.gcno
