@@ -38,20 +38,20 @@ $(USER_DIR_S)/sequence.o: src/sequence.cpp
 
 
 $(TESTS): $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o $(USER_DIR_T)/game_test.o $(USER_DIR_S)/game.o $(USER_DIR_T)/sequence_test.o $(USER_DIR_S)/sequence.o
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -L$(GTEST_DIR)/lib -l gtest_main -l gtest -lpthread $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o $(USER_DIR_T)/game_test.o $(USER_DIR_S)/game.o $(USER_DIR_T)/sequence_test.o $(USER_DIR_S)/sequence.o -o $(TESTS)
+	g++ $(GFLAGS) $(LDFLAGS) -L$(GTEST_DIR)/lib -l gtest_main -l gtest -lpthread $(USER_DIR_T)/leaderboard_test.o $(USER_DIR_S)/leaderboard.o $(USER_DIR_T)/menu_test.o $(USER_DIR_S)/menu.o $(USER_DIR_T)/game_test.o $(USER_DIR_S)/game.o $(USER_DIR_T)/sequence_test.o $(USER_DIR_S)/sequence.o -o $(TESTS)
 
 
 $(USER_DIR_T)/leaderboard_test.o: test/leaderboard_test.cpp
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/leaderboard_test.cpp -o $@
+	g++ $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/leaderboard_test.cpp -o $@
 
 $(USER_DIR_T)/menu_test.o: test/menu_test.cpp
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/menu_test.cpp -o $@
+	g++ $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/menu_test.cpp -o $@
 
 $(USER_DIR_T)/sequence_test.o: test/sequence_test.cpp
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/sequence_test.cpp -o $@
+	g++ $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/sequence_test.cpp -o $@
 
 $(USER_DIR_T)/game_test.o: test/game_test.cpp
-	g++ -lgcov --coverage $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/game_test.cpp -o $@
+	g++ $(GFLAGS) $(LDFLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/game_test.cpp -o $@
 
 clean:
 	rm -rf $(USER_DIR_S)/*.o
